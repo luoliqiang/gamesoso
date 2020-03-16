@@ -1,0 +1,128 @@
+@import "_variable";
+@import "_reset";
+@import "_comm";
+@import "_skinboy";
+#app {
+  margin: 0 auto;
+  width: 1200px;
+  .header {
+    padding: 100px 0 50px;
+    text-align: center;
+    #logo {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 80px;
+      width: 295px;
+      height: 50px;
+      text-indent: -1999px;
+      overflow: hidden;
+    }
+    .srh-bar {
+      width: 700px;
+      margin: 0 auto;
+      .srh-tabs {
+        overflow: hidden;
+        padding-left: 2px;
+        font-size: 13px;
+        margin-bottom: -2px;
+        .item  {
+          float: left;
+          margin-left: -2px;
+          font-weight: bold;
+          > div {
+            padding: 3px 7px;
+          }
+        }
+      }
+      .srh-inp-box {
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,.5);
+        .grat-border {
+          height: 45px;
+        }
+        input {
+          float: left;
+          padding: 0 10px;
+          width: 630px;
+          height: 100%;
+          box-sizing: border-box;
+          background: #192133;
+          border: none;
+        }
+        .srh-btn {
+          height: 45px;
+          line-height: 45px;
+        }
+      }
+    }
+  }
+  .content {
+    .game-cate-sec {
+      padding-bottom: 100px;
+      .tabs {
+        overflow: hidden;
+        & > div {
+          float: left;
+          width: 185px;
+          height: 50px;
+          line-height: 50px;
+          color: #e8b26e;
+          text-align: center;
+          font-size: 18px;
+          font-weight: bold;
+          @include bg-radient(#234f94, #22416f, bottom);
+          &.selected {
+            @include bg-radient(#faf0c6, #ebcc80, bottom);
+            color: #4c2f17;
+          }
+        }
+      }
+      .game-item {
+        display: inline-block;
+        width: 250px;
+        height: 55px;
+        margin: 20px 0 20px 20px;
+        overflow: hidden;
+        border-radius: 4px;
+        font-size: 12px;
+        box-sizing: border-box;
+        box-shadow: 0 0 10px rgba(0,0,0,.5);
+        padding: 5px;
+        background: #fff;
+        .avatar {
+          float: left;
+          width: 40px;
+          height: 40px;
+          margin: 4px 10px;
+          overflow: hidden;
+        }
+        .title {
+          font-size: 14px;
+          margin: 0 0 5px;
+        }
+        .info {
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  .bottom {
+    height: 280px;
+    padding-top: 70px;
+    box-sizing: border-box;
+    .logo-bottom {
+      float: left;
+      margin-right: 120px;
+    }
+    .contact {
+      float: right;
+      margin-left: 100px;
+    }
+    .company-intro {
+      overflow: hidden;
+      .copy-right {
+        padding-top: 30px;
+      }
+    }
+  }
+}
