@@ -4,6 +4,10 @@ body {
   background: linear-gradient(to bottom, #192133 0%, #192133 100%);
 }
 
+#app {
+  background: url(../img/skinboy/drag.png) no-repeat center center;
+}
+
 #logo {
   background: url(../img/skinboy/logo.png);
 }
@@ -92,6 +96,25 @@ body {
   background-position: center bottom;
 }
 
+.game-cate-sec:last-child {
+  background: none;
+}
+
 .company-intro {
+  font-size: 12px;
   color: #efbf6b;
+}
+
+.copy-right {
+  color: #4d637a;
+}
+
+.contact {
+  width: 330px;
+  text-align: left;
+  color: #fff;
+}
+
+.bottom {
+  border-top: 1px solid #8f7640;
 }
