@@ -29,9 +29,13 @@
           float: left;
           margin-left: -2px;
           font-weight: bold;
+          cursor: pointer;
           > div {
             padding: 3px 7px;
           }
+        }
+        .selected {
+          background: #224172;
         }
       }
       .srh-inp-box {
@@ -47,11 +51,16 @@
           height: 100%;
           box-sizing: border-box;
           background: #192133;
+          color: #9c844e;
           border: none;
         }
         .srh-btn {
           height: 45px;
           line-height: 45px;
+          cursor: pointer;
+          &:hover {
+            opacity: .9;
+          }
         }
       }
     }
@@ -63,7 +72,7 @@
         overflow: hidden;
         & > div {
           float: left;
-          width: 185px;
+          width: 196px;
           height: 50px;
           line-height: 50px;
           color: #e8b26e;
@@ -112,7 +121,8 @@
     box-sizing: border-box;
     .logo-bottom {
       float: left;
-      margin-right: 120px;
+      padding-top: 30px;
+      margin: 0 120px 0 0;
     }
     .contact {
       float: right;
@@ -136,6 +146,9 @@
       .copy-right {
         margin-left: 50px;
         padding-top: 30px;
+      }
+      .shortcut {
+        color: #fff;
       }
     }
   }

@@ -671,13 +671,17 @@ table {
   padding-top: 30px;
 }
 
+#app .bottom .company-intro .shortcut {
+  color: #fff;
+}
+
 body {
   background: -moz-linear-gradient(to bottom, #192133 0%, #192133 100%);
   background: -webkit-linear-gradient(to bottom, #192133 0%, #192133 100%);
   background: linear-gradient(to bottom, #192133 0%, #192133 100%);
 }
 
-.content {
+#app {
   background: url(../img/skinboy/drag.png) no-repeat center center;
 }
 
