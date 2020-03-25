@@ -74,11 +74,21 @@ body {
 }
 .game-cate-sec {
     margin-bottom: 20px;
-    background: url(../skinboy/banner-txt.png) no-repeat;
+    // background: url(../skinboy/banner-txt.png) no-repeat;
     background-position: center bottom;
     &:last-child {
         background: none;
     }
+}
+.sub-title {
+    margin-bottom: 0;
+    height: 80px;
+    line-height: 80px;
+    background: url(../skinboy/banner-txt.png) no-repeat center center;
+    color: #efbf6b;
+    font-size: 20px;
+    font-family: '宋体';
+    text-align: center;
 }
 .company-intro {
     font-size: 12px;

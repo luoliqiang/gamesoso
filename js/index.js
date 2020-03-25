@@ -23,10 +23,12 @@
 				var idx = $(this).index();
 				$('.game-cate-sec .tabs .selected').removeClass('selected');
 				$(this).addClass('selected');
-				$('.game-cate-main').addClass('hide').eq(idx).removeClass('hide');
+				$('.game-cate-content').addClass('hide').eq(idx).removeClass('hide');
 			})
 		},
 		init: function() {
+			$('.game-cate-content').eq(0).removeClass('hide')
+			$('.tabs .tab').eq(0).addClass('selected')
 			this.bind()
 		}
 	}
