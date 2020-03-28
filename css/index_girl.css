@@ -612,10 +612,10 @@ body {
   background: linear-gradient(to bottom, #192133 0%, #192133 100%); }
 
 #app {
-  background: url(../skinboy/drag.png) no-repeat center center; }
+  background: url(../skingirl/bg.png) no-repeat center top; }
 
 #logo {
-  background: url(../skinboy/logo.png); }
+  background: url(../skingirl/logo.png); }
 
 .grat-border-outer {
   border-radius: 4px;
@@ -630,39 +630,38 @@ body {
 
 .srh-tabs {
   color: #fff; }
+  .srh-tabs .item {
+    background: #fff;
+    color: #fb5964; }
   .srh-tabs .selected {
-    background: #224172; }
+    background: #fb5964;
+    color: #fff; }
 
 .srh-btn {
   position: relative;
   overflow: hidden;
-  background: -moz-linear-gradient(to bottom, #234f94 0%, #22416f 100%);
-  background: -webkit-linear-gradient(to bottom, #234f94 0%, #22416f 100%);
-  background: linear-gradient(to bottom, #234f94 0%, #22416f 100%);
+  background: #fb5964;
   color: #fff; }
 
+.grat-border {
+  border: 2px solid #fb5964; }
+
 .srh-inp-box input {
-  background: #192133; }
+  background: #fff; }
 
 .game-cate-sec {
-  background: #283447; }
-  .game-cate-sec .tabs {
-    background: -moz-linear-gradient(to bottom, #234f94 0%, #22416f 100%);
-    background: -webkit-linear-gradient(to bottom, #234f94 0%, #22416f 100%);
-    background: linear-gradient(to bottom, #234f94 0%, #22416f 100%); }
-    .game-cate-sec .tabs > div {
-      background: -moz-linear-gradient(to bottom, #234f94 0%, #22416f 100%);
-      background: -webkit-linear-gradient(to bottom, #234f94 0%, #22416f 100%);
-      background: linear-gradient(to bottom, #234f94 0%, #22416f 100%); }
-      .game-cate-sec .tabs > div:hover {
-        color: #fff; }
-      .game-cate-sec .tabs > div.selected {
-        background: -moz-linear-gradient(to bottom, #faf0c6 0%, #ebcc80 100%);
-        background: -webkit-linear-gradient(to bottom, #faf0c6 0%, #ebcc80 100%);
-        background: linear-gradient(to bottom, #faf0c6 0%, #ebcc80 100%);
-        color: #4c2f17; }
-        .game-cate-sec .tabs > div.selected:hover {
-          color: #4c2f17; }
+  background: #fb5964; }
+  .game-cate-sec .tabs > div {
+    background: #ffeed0; }
+    .game-cate-sec .tabs > div:hover {
+      color: #4c2f17 !important; }
+    .game-cate-sec .tabs > div.selected {
+      background: -moz-linear-gradient(to bottom, #fffdfd 0%, #fee0de 100%);
+      background: -webkit-linear-gradient(to bottom, #fffdfd 0%, #fee0de 100%);
+      background: linear-gradient(to bottom, #fffdfd 0%, #fee0de 100%);
+      color: #4c2f17; }
+      .game-cate-sec .tabs > div.selected:hover {
+        color: #4c2f17 !important; }
 
 .bg-decoration {
   position: relative; }
@@ -673,24 +672,16 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background: url(../skinboy/decoration.png) no-repeat center center;
+    background: url(../skingirl/decoration.png) no-repeat center center;
     background-size: auto; }
 
 .bg-decoration2 {
-  position: relative; }
-  .bg-decoration2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: url(../skinboy/decoration2.png) no-repeat center center;
-    background-size: auto; }
+  position: relative;
+  background: #ffeed0; }
 
 .content {
   padding-bottom: 20px;
-  background: #283447; }
+  background: #db4f59; }
 
 .game-cate-sec {
   margin-bottom: 20px;
@@ -702,7 +693,7 @@ body {
   margin-bottom: 0;
   height: 80px;
   line-height: 80px;
-  background: url(../skinboy/banner-txt.png) no-repeat center center;
+  background: url(../skingirl/banner-txt.png) no-repeat center center;
   color: #efbf6b;
   font-size: 20px;
   font-family: '宋体';
@@ -710,9 +701,10 @@ body {
 
 .company-intro {
   font-size: 12px;
-  color: #efbf6b; }
-  .company-intro .shortcut {
-    color: #fff; }
+  color: #fc6f79; }
+
+.shortcut {
+  color: #ff7e00; }
 
 .copy-right {
   font-size: 12px;
@@ -721,18 +713,19 @@ body {
 .contact {
   width: 330px;
   text-align: left;
-  color: #fff; }
+  color: #db4f59; }
 
 .bottom {
+  background: #232323;
   border-top: 1px solid #8f7640; }
 
 .logo-bottom {
   width: 295px;
   height: 71px;
-  background: url(../skinboy/logo.png) no-repeat; }
+  background: url(../skingirl/logo.png) no-repeat; }
 
 .skin-btn {
-  background: #141414 url(../img/skin-btn.png);
+  background: #09dbb9 url(../img/skin-btn-girl.png);
   background-size: 24px 24px;
   background-repeat: no-repeat;
   background-position: 20px 58px; }

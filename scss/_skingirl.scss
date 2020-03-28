@@ -7,10 +7,10 @@ body {
     @include bg-radient(#192133, #192133, bottom);
 }
 #app {
-    background: url(../skinboy/drag.png) no-repeat center center
+    background: url(../skingirl/bg.png) no-repeat center top;
 }
 #logo {
-    background: url(../skinboy/logo.png);
+    background: url(../skingirl/logo.png);
 }
 .grat-border-outer {
     border-radius: 4px;
@@ -25,35 +25,42 @@ body {
 }
 .srh-tabs {
     color: #fff;
+    .item {
+        background: #fff;
+        color: #fb5964;
+    }
     .selected {
-        background: #224172;
+        background: #fb5964;
+        color: #fff;
     }
 }
 .srh-btn {
     position: relative;
     overflow: hidden;
-    @include bg-radient(#234f94, #22416f, bottom);
+    background: #fb5964;
     color: #fff;
+}
+.grat-border {
+    border: 2px solid #fb5964;
 }
 .srh-inp-box {
     input {
-        background: #192133;
+        background: #fff;
     }
 }
 .game-cate-sec {
-    background: #283447;
+    background: #fb5964;
     .tabs {
-        @include bg-radient(#234f94, #22416f, bottom);
         > div {
-            @include bg-radient(#234f94, #22416f, bottom);
+            background: #ffeed0;
             &:hover {
-                color: #fff;
+                color: #4c2f17 !important;
             }
             &.selected {
-                @include bg-radient(#faf0c6, #ebcc80, bottom);
+                @include bg-radient(#fffdfd, #fee0de, bottom);
                 color: #4c2f17;
                 &:hover {
-                  color: #4c2f17;
+                    color: #4c2f17 !important;
                 }
             }
         }
@@ -68,30 +75,31 @@ body {
         top: 0;
         width: 100%;
         height: 100%;
-        background: url(../skinboy/decoration.png) no-repeat center center;
+        background: url(../skingirl/decoration.png) no-repeat center center;
         background-size: auto;
     }
 }
 .bg-decoration2 {
     position: relative;
-    &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: url(../skinboy/decoration2.png) no-repeat center center;
-        background-size: auto;
-    }
+    background: #ffeed0;
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     left: 0;
+    //     top: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     background: url(../skingirl/decoration2.png) no-repeat center center;
+    //     background-size: auto;
+    // }
 }
 .content {
     padding-bottom: 20px;
-    background: #283447;
+    background: #db4f59;
 }
 .game-cate-sec {
     margin-bottom: 20px;
-    // background: url(../skinboy/banner-txt.png) no-repeat;
+    // background: url(../skingirl/banner-txt.png) no-repeat;
     background-position: center bottom;
     &:last-child {
         background: none;
@@ -101,7 +109,7 @@ body {
     margin-bottom: 0;
     height: 80px;
     line-height: 80px;
-    background: url(../skinboy/banner-txt.png) no-repeat center center;
+    background: url(../skingirl/banner-txt.png) no-repeat center center;
     color: #efbf6b;
     font-size: 20px;
     font-family: '宋体';
@@ -109,10 +117,10 @@ body {
 }
 .company-intro {
     font-size: 12px;
-    color: #efbf6b;
-    .shortcut {
-        color: #fff;
-    }
+    color: #fc6f79;
+}
+.shortcut {
+    color: #ff7e00;
 }
 .copy-right {
     font-size: 12px;
@@ -121,18 +129,19 @@ body {
 .contact {
     width: 330px;
     text-align: left;
-    color: #fff;
+    color: #db4f59;
 }
 .bottom {
+    background: #232323;
     border-top: 1px solid #8f7640;
 }
 .logo-bottom {
     width: 295px;
     height: 71px;
-    background: url(../skinboy/logo.png) no-repeat;
+    background: url(../skingirl/logo.png) no-repeat;
 }
 .skin-btn {
-    background: rgb(20, 20, 20) url(../img/skin-btn.png);
+    background: #09dbb9 url(../img/skin-btn-girl.png);
     background-size: 24px 24px;
     background-repeat: no-repeat;
     background-position: 20px 58px;

@@ -25,6 +25,19 @@
 				$(this).addClass('selected');
 				$('.game-cate-content').addClass('hide').eq(idx).removeClass('hide');
 			})
+
+			// 换肤
+			$('.skin-btn').on('click', function() {
+				console.log(33)
+				var $css = document.getElementById('css-link')
+				console.log($css.href)
+				if ($css.href.indexOf('index.css') >= 0) {
+					console.log(4545)
+					$css.href = './css/index_girl.css?t=' + (+new Date())
+				} else {
+					$css.href = './css/index.css?t=' + (+new Date())
+				}
+			})
 		},
 		init: function() {
 			$('.game-cate-content').eq(0).removeClass('hide')
