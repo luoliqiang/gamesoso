@@ -84,6 +84,10 @@
             @include bg-radient(#faf0c6, #ebcc80, bottom);
             color: #4c2f17;
           }
+          &:hover {
+            @include bg-radient(#faf0c6, #ebcc80, bottom);
+            color: #4c2f17;
+          }
         }
       }
       .game-cate-main {
