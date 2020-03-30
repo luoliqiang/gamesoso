@@ -534,7 +534,10 @@ table {
     box-sizing: border-box;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 5px;
-    background: #fff; }
+    background: #fff;
+    transition: all ease .5s; }
+    #app .content .game-cate-sec .game-item:hover {
+      transform: translateX(5px); }
     #app .content .game-cate-sec .game-item a {
       color: #000;
       text-decoration: none; }
@@ -645,7 +648,8 @@ body {
   background: #192133; }
 
 .game-cate-sec {
-  background: #283447; }
+  background: #283447;
+  background: red; }
   .game-cate-sec .tabs {
     background: -moz-linear-gradient(to bottom, #234f94 0%, #22416f 100%);
     background: -webkit-linear-gradient(to bottom, #234f94 0%, #22416f 100%);
@@ -655,12 +659,12 @@ body {
       background: -webkit-linear-gradient(to bottom, #234f94 0%, #22416f 100%);
       background: linear-gradient(to bottom, #234f94 0%, #22416f 100%); }
       .game-cate-sec .tabs > div:hover {
-        color: #fff; }
+        color: #fff !important; }
       .game-cate-sec .tabs > div.selected {
         background: -moz-linear-gradient(to bottom, #faf0c6 0%, #ebcc80 100%);
         background: -webkit-linear-gradient(to bottom, #faf0c6 0%, #ebcc80 100%);
         background: linear-gradient(to bottom, #faf0c6 0%, #ebcc80 100%);
-        color: #4c2f17; }
+        color: #4c2f17 !important; }
         .game-cate-sec .tabs > div.selected:hover {
           color: #4c2f17; }
 
@@ -705,7 +709,7 @@ body {
   background: url(../skinboy/banner-txt.png) no-repeat center center;
   color: #efbf6b;
   font-size: 20px;
-  font-family: '宋体';
+  font-family: '瀹嬩綋';
   text-align: center; }
 
 .company-intro {

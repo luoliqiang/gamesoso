@@ -42,16 +42,17 @@ body {
 }
 .game-cate-sec {
     background: #283447;
+    background: red;
     .tabs {
         @include bg-radient(#234f94, #22416f, bottom);
         > div {
             @include bg-radient(#234f94, #22416f, bottom);
             &:hover {
-                color: #fff;
+                color: #fff !important;
             }
             &.selected {
                 @include bg-radient(#faf0c6, #ebcc80, bottom);
-                color: #4c2f17;
+                color: #4c2f17 !important;
                 &:hover {
                   color: #4c2f17;
                 }
