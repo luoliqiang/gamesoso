@@ -1,0 +1,280 @@
+@import "_variable";
+@import "_reset";
+@import "_base";
+ul,li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.btn {
+    display: inline-block;
+    cursor: pointer;
+}
+.btn-flex {
+    padding: 0 30px;
+}
+.btn-middle {
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.btn-dot-white {
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 0 6px inset rgba(255,255,255, 1);
+    background: url(#{$imgPath}/btn-white-bg.png);
+    border: 1px solid #fff;
+}
+.btn-dot-gold {
+    color: #fff;
+    border: 1px solid $colorYellow;
+    box-shadow: 0 0 6px inset rgba(242,169,0,1);
+    background: url(#{$imgPath}/btn-gold-bg.png);
+}
+.ico {
+    display: inline-block;
+}
+.ico-add,
+.ico-refresh {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: -3px;
+    background: url(#{$imgPath}ico/ico-refresh.png) no-repeat center center;
+}
+.ico-add {
+    background: url(#{$imgPath}ico/ico-star.png) no-repeat center center;
+}
+.ico-arrowdown {
+    @include arrow(bottom, $colorGray, $bgContent);
+}
+.ico-arrowright {
+    margin-left: 5px;
+    @include arrow(left, $colorGray, $bgContent);
+}
+.ico-man {
+    width: 12px;
+    height: 22px;
+    background: url(#{$imgPath}ico/ico-man.png) no-repeat;
+}
+.ico-rank {
+    width: 21px;
+    height: 18px;
+    background: url(#{$imgPath}ico/ico-rank.png) no-repeat;
+}
+.ico-kill {
+    width: 21px;
+    height: 18px;
+    background: url(#{$imgPath}ico/ico-kill.png) no-repeat;
+}
+.ico-love {
+    width: 20px;
+    height: 19px;
+    background: url(#{$imgPath}ico/ico-love.png) no-repeat;
+}
+.ico-menu {
+    width: 20px;
+    height: 17px;
+    background: url(#{$imgPath}ico/ico-menu.png) no-repeat;
+}
+.ico-video {
+    width: 20px;
+    height: 11px;
+    background: url(#{$imgPath}ico/ico-video.png) no-repeat;
+}
+.ico-cup {
+    width: 20px;
+    height: 18px;
+    background: url(#{$imgPath}ico/ico-cup.png) no-repeat;
+}
+.ico-diamond {
+    width: 20px;
+    height: 18px;
+    background: url(#{$imgPath}ico/ico-diamond.png) no-repeat;
+}
+.ico-flag-2 {
+    width: 19px;
+    height: 20px;
+    background: url(#{$imgPath}ico/ico-flag-2.png) no-repeat;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    padding: 0 20px;
+    height: 40px;
+    background: $bgContent;
+    line-height: 40px;
+    color: $colorGray;
+    box-sizing: border-box;
+    padding-left: 20px;
+    .btn {
+        color: #fff;
+        .ico {
+            margin-left: 10px;
+            vertical-align: -5px;
+        }
+    }
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    background: $bgContent;
+}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    color: $colorGray;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+.process-line {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background: #000;
+    border-radius: 4px;
+    .process-line-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: $colorYellow;
+        border-radius: 4px;
+    }
+}
+.process-line-blue {
+    .process-line-inner {
+        background: $colorBlue;
+    }
+}
+.process-line-green {
+    .process-line-inner {
+        background: $colorGreen;
+    }
+}
+.wrapper {
+    margin: 0 auto;
+    width: 1400px;
+}
+.sec {
+    margin-top: 30px;
+    clear: both;
+}
+.sec-title {
+    margin-bottom: 30px;
+    padding-left: 10px;
+    font-size: 16px;
+    border-left: 2px solid $colorYellow;
+    color: $colorYellow;
+}
+.sec-cont {
+    padding: 20px;
+    background: $bgContent;
+    color: #fff;
+}
+body {
+    font-size: 14px;
+}
+.header {
+    height: 50px;
+    background: url(#{$imgPath}header-bg.png);
+    .logo {
+        float: left;
+        margin: 0;
+        margin-left: 45px;
+        width: 140px;
+        text-indent: -999px;
+        line-height: 50px;
+        background: url(#{$imgPath}logo.png) no-repeat center center;
+    }
+    .nav {
+        overflow: hidden;
+        color: #fff;
+        overflow: hidden;
+        li {
+            float: left;
+            a {
+                display: block;
+                padding: 0 15px;
+                line-height: 50px;
+                color: #969696;
+                text-decoration: none;
+                cursor: pointer;
+                font-size: 16px;
+                &:hover {
+                    color: #fff;
+                }
+            }
+            &.selected {
+                a {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+.bottom {
+    margin-top: 100px;
+    height: 280px;
+    padding-top: 70px;
+    box-sizing: border-box;
+    background: $bgContent;
+    .logo-bottom {
+        float: left;
+        margin: 30px 120px 0 0;
+        width: 295px;
+        height: 71px;
+        background: url(#{$imgPath}logo2.png) no-repeat center center;
+    }
+    .contact {
+        float: right;
+        margin-left: 100px;
+        font-size: 14px;
+        width: 330px;
+        text-align: left;
+        color: #fff;
+        .mb10 {
+            margin-bottom: 10px;
+        }
+        img {
+            margin-right: 20px;
+            width: 140px;
+            height: 140px;
+        }
+    }
+    .company-intro {
+      overflow: hidden;
+      font-size: 12px;
+      line-height: 2;
+      width: 350px;
+      font-size: 14px;
+      color: #969696;
+      .copy-right {
+        margin-left: 50px;
+        padding-top: 30px;
+        color: #666;
+      }
+      .shortcut {
+        color: #fff;
+      }
+    }
+}
