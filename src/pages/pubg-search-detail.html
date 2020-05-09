@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<title>game搜搜 - www.gamesousou.com/</title>
+<meta name="description" content="game搜搜提供各类游戏，吃鸡，英雄联盟等游戏的导航，专为游戏玩家而设计的导航！迅速了解赛事新闻，精准找到游戏官网，不用在费劲去记住每个游戏网站，并提供了游戏直播，游戏陪玩，游戏租号，加速器，游戏公会等相关的游戏服务聚合，方便玩家朋友快速进入" />
+<meta name="keywords" content="game搜搜,游戏导航，吃鸡，英雄联盟，赛事新闻，游戏官网" />
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link id="css-link" rel="stylesheet" href="../assets/css/comm.css">
+<link id="css-link" rel="stylesheet" href="../assets/css/search.css">
+</head> 
+<body>
+<div class="page-search-detail">
+  <!-- 头部搜索 --> 
+  <div class="header"> 
+    <h1 class="logo">头号队友</h1>
+    <ul class="nav">
+      <li><a href="./index.html">首页</a></li>
+      <li class="selected"><a href="./pubg-search-detail.html">绝地求生战绩查询</a></li>
+      <li><a href="./team.html">组队开黑</a></li>
+      <li><a>游戏商城</a></li>
+      <li><a>游戏直播</a></li>
+      <li><a>休闲游戏</a></li>
+      <li><a>动漫影视</a></li>
+    </ul>
+  </div>
+  <!-- 搜索 -->
+  <div class="search">
+    <input id="search-inp" type="text" placeholder="请输入要查询的用户昵称进行查询">
+    <div class="btn srh-btn"></div>
+  </div>
+  <!-- 内容 -->
+  <div class="wrapper" id="vm-app">
+    <!-- 用户信息 -->
+    <div class="sec-usr">
+      <div class="avatar">
+        <img src="../assets/img/avatar.png">
+      </div>
+      <div class="user-info">
+        <div class="prof">
+          <div class="nick-name">-</div>
+          <div class="btns">
+            <div class="btn btn-middle btn-dot-white btn-refresh"><i class="ico ico-refresh"></i>更新</div>
+            <div class="btn btn-middle btn-dot-white btn-add"><i class="ico ico-add"></i>收藏</div>
+          </div>
+          <div class="refresh-time">
+            最近更新：<span class="refresh-time-num">-</span>
+          </div>
+        </div>
+        <div class="qrcode">
+          <div class="left-txt">微信扫码</div>
+          <img src="">
+          <div class="qr-items">
+            <div>战绩查询</div>
+            <div>组队开黑</div>
+            <div>战绩查询</div>
+            <div>战绩查询</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 数据查询 -->
+    <div class="sec-data hide" :class="{show: sessonList && sessonList.length}">
+      <div class="session-select">
+        <div class="select-dropdown">
+          比赛：
+          <div id="dropdown-wrap">
+            <div class="dropdown dropdown-session">
+              <div class="btn">
+                <span class="dropdown-name"></span>
+                <i class="ico ico-arrowdown"></i></div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-item" data-val="">2020第一赛季</div>
+                    <div class="dropdown-item" data-val="">第二赛季</div>
+                </div>
+            </div>
+            <div class="dropdown dropdown-session-mode">
+              <div class="btn">
+                <span class="dropdown-name">TPP</span>
+                <i class="ico ico-arrowdown"></i>
+              </div>
+              <div class="dropdown-menu">
+                  <div class="dropdown-item">TPP</div>
+                  <div class="dropdown-item">FPP</div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="select-item">
+            <div class="btn">
+              2020第一赛季<i class="ico ico-arrowdown"></i>
+            </div>
+            <div class="dropdown">
+              <div class="dropdown-menu">
+                <div class="dropdown-item">2020第一赛季</div>
+                <div class="dropdown-item">第二赛季</div>
+              </div>
+            </div>
+          </div>
+          <div class="select-item">
+            <div class="btn">
+              tpp<i class="ico ico-arrowdown"></i>
+            </div>
+            <div class="dropdown">
+              <div class="dropdown-menu">
+                <div class="dropdown-item">tpp</div>
+                <div class="dropdown-item">cope</div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="data-item-wrap">
+        <div class="data-item" v-for="(item, idx) in sessonList">
+          <div class="title">
+            <span class="type">
+              <i class="ico ico-man"></i>
+              </i>{{ idx === 0 ? '单排' : idx === 1 ? '双排' : '三排' }}
+            </span>
+            <span class="round-num">{{ item.roundsPlayed }}场</span>
+          </div>
+          <div class="prof">
+            <img class="fl" :src="'../assets/img/game-type-' + (idx+1) +'.png'">
+            <div class="fr">
+              <b>{{ item.rankPoints || '-' }}</b>
+              <div class="name">Surivor</div>
+              <div class="rank">第{{ '-' }}名</div>
+              <!-- <div class="process-line">
+                <div class="process-line-inner" style="width: 50%;"></div>
+              </div> -->
+            </div>
+            <div class="badge-wrap">
+              <div class="badge-1">
+                <i class="ico ico-rank"></i> {{ item.wins }}
+              </div>
+              <div class="badge-2">
+                <i class="ico ico-kill"></i> {{ item.top10s }}
+              </div>
+            </div>
+            <div class="stat">
+              <div class="trip-bg">
+                击杀总数<br>
+                <b class="num-kd">{{ item.kills }}</b>
+              </div>
+              <div class="trip-bg">
+                场均击杀<br>
+                <b class="num-hurt">{{ Math.ceil(item.kills / item.roundsPlayed * 100) / 100 }}</b>
+              </div>
+              <div>助攻总数 <span>{{ item.assists }}</span></div>
+              <div>场均助攻 <span>{{ Math.ceil(item.assists / item.roundsPlayed * 100) / 100 }}</span></div>
+              <div class="trip-bg">最多击杀 <span>{{ item.roundMostKills }}</span></div>
+              <div class="trip-bg">最远击杀 <span>{{ Math.ceil(item.longestKill / 100) / 10 }}m</span></div>
+              <div>Top 10% <span>{{ item.top10Rate / 10 }}%</span></div>
+              <div class="trip-bg">爆头率 <span>{{ item.headShotKillsRate / 10 }}%</span></div>
+              <div class="trip-bg">KDA <span>{{ Math.ceil(item.kda / 100) / 10 }}</span></div>
+              <div>场均生存时间 <span>{{ formTime(item.timeSurvivedAvg / 1000) }}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec sec-recent hide">
+      <div class="sec-title">最近15日战绩</div>
+      <div class="sec-cont">
+        <div>数值：
+          <div class="tabs tabs-15day">
+            <div class="tab selected">击杀</div>
+            <div class="tab">场均伤害</div>
+            <div class="tab">助攻</div>
+            <div class="tab">KD</div>
+            <div class="tab">救队友</div>
+          </div>
+        </div>
+        <div id="ecahrt-model"></div>
+      </div>
+    </div>
+    <div class="sec sec-record hide" :class="{show: matchesList && matchesList.length}">
+      <div class="sec-title">比赛记录</div>
+      <div class="sec-cont">
+        <table>
+          <thead>
+            <tr>
+              <th>排名</th>
+              <th>模式</th>
+              <th>击杀</th>
+              <th>击倒</th>
+              <th>伤害</th>
+              <th>助攻</th>
+              <th>救队友</th>
+              <th>存活时间</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <template v-for="(item, idx) in matchesList" :key="idx">
+              <tr>
+                <td>{{ item.playerInfo && item.playerInfo.rank }}</td>
+                <td>{{ item.matchesInfo.gameMode }}
+                  <span class="ico-wrap">
+                    <i class="ico ico-man"></i>
+                    <i class="ico ico-man"></i>
+                  </span></td>
+                <td>{{ item.playerInfo.kills }}</td>
+                <td>{{ item.playerInfo.dbnos }}</td>
+                <td>{{ Math.ceil(item.playerInfo.damageDealt / 100) / 10 }}</td>
+                <td>{{ item.playerInfo.assists }}</td>
+                <td>{{ item.playerInfo.heals }}</td>
+                <td>{{ formTime(item.playerInfo.timeSurvived / 1000) }}</td>
+                <td>
+                  <div class="btn btn-data-more" :class="{open: item.showTeam}" @click="showTeam(item)">
+                    全队数据<i class="ico ico-arrowdown"></i>
+                  </div>
+                </td>
+              </tr>
+              <tr v-if="item.showTeam">
+                <td class="td-detail" colspan="9">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>名称</th>
+                        <th>伤害</th>
+                        <th>击杀</th>
+                        <th>击倒</th>
+                        <th>助攻</th>
+                        <th>救队友</th>
+                        <th>存活时间</th>
+                      </tr>
+                    </thead>
+                    <tr v-for="(team, subidx) in item.teamList" :key="subidx">
+                      <td>{{ team.account }}</td>
+                      <td>
+                        <div class="process-line">
+                          <div class="process-line-inner" :class="'process-line-inner-' + subidx" :style="'width: ' + team.damageDealt / item.damageDealtAll * 100 + '%'"></div>
+                        </div>
+                        {{ Math.ceil(team.damageDealt / 100) / 10 }}
+                      </td>
+                      <td>{{ team.kills }}</td>
+                      <td>{{ team.dbnos }}</td>
+                      <td>{{ team.assists }}</td>
+                      <td>{{ team.heals }}</td>
+                      <td>{{ formTime(team.timeSurvived / 1000) }}</td>
+                    </tr>
+                  </table>
+                </td>
+                <!-- <td v-if="!item.teamList" class="td-detail" colspan="9">
+                  <div>数据加载中...</div>
+                </td> -->
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+      <div class="btn btn-showmore">显示更多</div>
+    </div>
+  </div>
+  <!-- 页脚 -->
+  <!-- 底部 --> 
+  <div class="bottom"> 
+    <div class="wrapper">
+      <div class="logo-bottom"></div> 
+      <div class="contact">
+        <div class="mb10">联系方式</div>
+        <div>
+          <img src=""> 
+          <img src=""> 
+        </div>
+      </div>
+      <div class="company-intro">
+        专为游戏玩家而设计的导航！迅速了解赛事新闻，精准找到游戏官网，不用在费劲去记住每个游戏网站，并提供了游戏直播，游戏陪玩，游戏租号，加速器，游戏公会等相关的游戏服务聚合，方便玩家朋友快速进入！非常节约时间，欢迎按 
+        <span class="shortcut">Ctrl+D</span> 收藏至书签。 
+        <div class="copy-right">
+        Copyright © 2020 蜀ICP备19007792号
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script data-main="../js/app/search.js" src="../lib/require.js"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?82bbd0dd27ab5477bc3099ae1f2f3f0e";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>

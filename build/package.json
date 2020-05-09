@@ -9,9 +9,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-preset-env": "^1.7.0",
     "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
     "gulp-connect": "^5.7.0",
     "gulp-file-include": "^2.1.1",
+    "gulp-html-replace": "^1.6.2",
     "gulp-sass": "^4.0.2"
   }
 }
