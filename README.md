@@ -1,2 +1,0 @@
-# gamesoso
-game soso
