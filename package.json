@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "babel-preset-env": "^1.7.0",
+    "gulp-babel": "^8.0.0",
+    "http-proxy-middleware": "^1.0.3"
+  },
+  "name": "gamesoso",
+  "description": "game soso",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd build && gulp",
+    "build": "cd build && gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoliqiang/gamesoso.git"
+  },
+  "author": "luoliqiang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luoliqiang/gamesoso/issues"
+  },
+  "homepage": "https://github.com/luoliqiang/gamesoso#readme"
+}

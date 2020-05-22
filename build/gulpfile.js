@@ -1,4 +1,4 @@
-const { watch, src, dest } = require('gulp');
+const { watch, src, dest, series } = require('gulp');
 var connect = require('gulp-connect');
 var sass = require('gulp-sass');
 var proxy = require('http-proxy-middleware').createProxyMiddleware;
@@ -45,21 +45,31 @@ function server () {
 }
 
 function transfromJs () {
-    return src('../src/js/app/*.js')
+    return src('../dist/js/app/**/*.js')
         .pipe(babel({
             presets: ['@babel/env']
         }))
-        .pipe(dest('../src/js/app-build'))
-        .piple
+        .pipe(dest('../dist/js/app'))
 }
 
-function clean () {
-    return src(['dist'], {read: false})
-        .pipe(clean());
+function cleanDist () {
+    return src(['../dist'], {allowEmpty: true})
+        .pipe(clean({force: true}));
+}
+
+function cleanNodemodules () {
+    return src(['../dist/node_modules', '../dist/assets/scss'], {allowEmpty: true})
+        .pipe(clean({force: true}));
 }
 
 function copy () {
-    return src(['../src/**/*'])
+    return src([
+            '../src/**/*',
+            '!../src/node_modules/',
+            '!../src/node_modules/**',
+            '!../src/assets/scss/',
+            '!../src/assets/scss/**'
+        ])
         .pipe(dest('../dist'));
 }
 
@@ -69,9 +79,12 @@ exports.default = function (cb) {
     autoReload()
     cb()
 }
-exports.build = function (cb) {
-    clean()
-    copy()
-    transfromJs()
-    cb()
-}
+exports.build = series(cleanDist, copy, cleanNodemodules, transfromJs)
+// function (cb) {
+//     series(cleanDist, copy, transfromJs)
+//     // cleanDist()
+//     // copy()
+//     // transfromJs()
+//     // cleanNodemodules()
+//     cb()
+// }

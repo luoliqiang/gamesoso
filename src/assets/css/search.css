@@ -1,3 +1,12 @@
+.loading {
+  height: 300px;
+  background: url(../img/ico/ico-loading.gif) center center no-repeat; }
+
+.init-tip {
+  color: #fff;
+  text-align: center;
+  line-height: 380px; }
+
 .search {
   height: 50px;
   width: 1190px;
@@ -21,18 +30,26 @@
     float: right;
     width: 140px;
     height: 50px;
-    background: url(../img/srh-btn.png) center center no-repeat #000; }
-    .search .srh-btn:hover {
-      opacity: .9; }
+    line-height: 50px;
+    font-size: 16px;
+    color: #f6d8a0; }
+    .search .srh-btn .ico {
+      margin: 0 10px 0 0;
+      vertical-align: -4px; }
 
 .page-search-detail {
-  background: url(../img/banner-bg2.png) #14151b no-repeat center 50px; }
+  background: url(../img/banner-bg2.png) #14151b no-repeat center 50px;
+  overflow: hidden; }
   .page-search-detail .sec-usr {
+    position: relative;
     margin-top: 65px;
     background: #20212a;
-    overflow: hidden;
     color: #fff;
     padding: 30px; }
+    .page-search-detail .sec-usr::after {
+      content: "";
+      display: block;
+      clear: both; }
     .page-search-detail .sec-usr .avatar {
       float: left;
       margin: 0 35px 0 20px;
@@ -43,10 +60,19 @@
         margin-bottom: 10px;
         font-size: 24px;
         font-weight: bold; }
-    .page-search-detail .sec-usr .user-info .qrcode {
-      float: right;
-      height: 125px; }
-      .page-search-detail .sec-usr .user-info .qrcode .left-txt {
+    .page-search-detail .sec-usr .user-info .adv {
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+      transition: all ease .5s; }
+      .page-search-detail .sec-usr .user-info .adv:hover {
+        transform: scale(1.05); }
+      .page-search-detail .sec-usr .user-info .adv a {
+        display: block; }
+      .page-search-detail .sec-usr .user-info .adv img {
+        display: block;
+        width: 370px; }
+      .page-search-detail .sec-usr .user-info .adv .left-txt {
         float: left;
         padding: 0 3px;
         writing-mode: tb-rl;
@@ -56,23 +82,17 @@
         text-align: center;
         background: #f2a900;
         letter-spacing: 7px; }
-      .page-search-detail .sec-usr .user-info .qrcode .qr-items {
+      .page-search-detail .sec-usr .user-info .adv .qr-items {
         float: right; }
-        .page-search-detail .sec-usr .user-info .qrcode .qr-items > div {
+        .page-search-detail .sec-usr .user-info .adv .qr-items > div {
           margin: 5px 0 10px 18px;
           color: #f2a900; }
-      .page-search-detail .sec-usr .user-info .qrcode img {
-        width: 125px;
-        height: 100%; }
     .page-search-detail .sec-usr .user-info .btn-add,
     .page-search-detail .sec-usr .user-info .btn-refresh {
       margin-right: 15px; }
       .page-search-detail .sec-usr .user-info .btn-add .ico,
       .page-search-detail .sec-usr .user-info .btn-refresh .ico {
         margin-right: 6px; }
-      .page-search-detail .sec-usr .user-info .btn-add:hover,
-      .page-search-detail .sec-usr .user-info .btn-refresh:hover {
-        opacity: .9; }
     .page-search-detail .sec-usr .user-info .refresh-time {
       margin-top: 20px;
       color: #999999; }
@@ -87,19 +107,11 @@
       color: #999999;
       box-sizing: border-box;
       padding-left: 20px; }
-      .page-search-detail .sec-data .select-dropdown #dropdown-wrap {
-        display: inline-block; }
-      .page-search-detail .sec-data .select-dropdown .dropdown {
-        position: relative; }
-        .page-search-detail .sec-data .select-dropdown .dropdown:last-child::before {
-          position: absolute;
-          content: '';
-          top: 0;
-          left: 0;
-          display: block;
-          height: 100%;
-          width: 1px;
-          background: #000; }
+      .page-search-detail .sec-data .select-dropdown .el-dropdown {
+        padding-left: 15px;
+        color: #fff; }
+        .page-search-detail .sec-data .select-dropdown .el-dropdown i {
+          margin-left: 30px; }
     .page-search-detail .sec-data .data-item-wrap {
       overflow: hidden;
       width: 120%; }
@@ -108,7 +120,15 @@
         float: left;
         width: 450px;
         margin: 0 20px 0 0;
+        min-height: 380px;
         background-color: #20212a; }
+        .page-search-detail .sec-data .data-item-wrap .data-item:nth-child(2) .title {
+          background: #337dec; }
+        .page-search-detail .sec-data .data-item-wrap .data-item:nth-child(3) .title {
+          background: #279933; }
+        .page-search-detail .sec-data .data-item-wrap .data-item .loading {
+          height: 300px;
+          background: url(../img/ico/ico-loading.gif) center center no-repeat; }
         .page-search-detail .sec-data .data-item-wrap .data-item .process-line {
           width: 300px; }
         .page-search-detail .sec-data .data-item-wrap .data-item .title {
@@ -118,8 +138,9 @@
           background: #f2a900;
           color: #fff; }
           .page-search-detail .sec-data .data-item-wrap .data-item .title .ico {
-            margin-right: 10px;
             vertical-align: -5px; }
+            .page-search-detail .sec-data .data-item-wrap .data-item .title .ico:last-child {
+              margin-right: 10px; }
           .page-search-detail .sec-data .data-item-wrap .data-item .title .round-num {
             float: right; }
         .page-search-detail .sec-data .data-item-wrap .data-item .prof {
@@ -170,6 +191,165 @@
         background: #337dec; }
       .page-search-detail .sec-data .data-item-wrap .data-item-3 .title {
         background: #279933; }
+  .page-search-detail .sec-weapon {
+    padding-left: 0;
+    margin-left: 0; }
+    .page-search-detail .sec-weapon .sec-cont {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      background: transparent; }
+      .page-search-detail .sec-weapon .sec-cont .arrow-right,
+      .page-search-detail .sec-weapon .sec-cont .arrow-left {
+        position: absolute;
+        left: -30px;
+        top: 47px;
+        height: auto;
+        z-index: 3;
+        cursor: pointer; }
+        .page-search-detail .sec-weapon .sec-cont .arrow-right:hover,
+        .page-search-detail .sec-weapon .sec-cont .arrow-left:hover {
+          opacity: .9; }
+      .page-search-detail .sec-weapon .sec-cont .arrow-right {
+        left: auto;
+        right: -30px; }
+    .page-search-detail .sec-weapon .fl {
+      float: left; }
+    .page-search-detail .sec-weapon .center {
+      overflow: hidden; }
+    .page-search-detail .sec-weapon .txt-item {
+      display: inline-block;
+      padding: 0 10px;
+      text-align: center; }
+    .page-search-detail .sec-weapon .txt {
+      line-height: 1.2;
+      font-size: 12px;
+      color: #666666; }
+    .page-search-detail .sec-weapon .txt-middle {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff; }
+    .page-search-detail .sec-weapon .weapon-item-wrapper-box {
+      height: 145px;
+      overflow: hidden; }
+    .page-search-detail .sec-weapon .weapon-item-wrapper {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      height: 200px;
+      transition: all ease .4s; }
+    .page-search-detail .sec-weapon .weapon-item {
+      flex-grow: 0;
+      flex-shrink: 0;
+      width: 310px;
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      background: #20212a;
+      padding: 10px;
+      height: 145px;
+      margin-right: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 0 10px black; }
+      .page-search-detail .sec-weapon .weapon-item.weapon-item-detail {
+        transition: all ease .4s;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 350px;
+        width: 1325px;
+        z-index: 999; }
+      .page-search-detail .sec-weapon .weapon-item .arrow:hover {
+        cursor: pointer;
+        opacity: .6; }
+      .page-search-detail .sec-weapon .weapon-item > .fl {
+        width: 370px;
+        margin-right: 10px;
+        box-sizing: border-box;
+        border-right: 1px solid #292b36; }
+        .page-search-detail .sec-weapon .weapon-item > .fl .stat-prof {
+          overflow: hidden; }
+        .page-search-detail .sec-weapon .weapon-item > .fl .pic-box {
+          float: left;
+          width: 120px;
+          height: 125px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 0 10px inset rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          background: #1a1b22; }
+          .page-search-detail .sec-weapon .weapon-item > .fl .pic-box img {
+            max-width: 100%;
+            max-height: 100%; }
+      .page-search-detail .sec-weapon .weapon-item .info {
+        margin-left: 135px;
+        font-size: 18px; }
+        .page-search-detail .sec-weapon .weapon-item .info .gun-name {
+          padding-bottom: 5px;
+          font-size: 24px; }
+        .page-search-detail .sec-weapon .weapon-item .info .badge-name {
+          font-size: 14px;
+          color: #999;
+          margin-left: 40px; }
+          .page-search-detail .sec-weapon .weapon-item .info .badge-name .process-line {
+            margin-top: 5px;
+            width: 100px;
+            height: 2px;
+            background: #14151b; }
+        .page-search-detail .sec-weapon .weapon-item .info .stat-prof-stat {
+          margin-top: 15px;
+          margin-left: -10px;
+          text-align: left;
+          clear: both; }
+      .page-search-detail .sec-weapon .weapon-item .stat-detail {
+        clear: both;
+        margin-top: 30px; }
+        .page-search-detail .sec-weapon .weapon-item .stat-detail .txt-item {
+          width: 75px;
+          padding: 0;
+          margin-bottom: 10px;
+          color: #999; }
+      .page-search-detail .sec-weapon .weapon-item .titles .item {
+        display: inline-block;
+        padding: 10px;
+        width: 210px;
+        height: 95px;
+        overflow: hidden;
+        margin: 0 20px 10px 0;
+        background: #1a1b22;
+        box-sizing: border-box; }
+        .page-search-detail .sec-weapon .weapon-item .titles .item .fl {
+          margin: 5px 10px 0 0; }
+        .page-search-detail .sec-weapon .weapon-item .titles .item .center {
+          float: left;
+          width: 80px;
+          height: 70px;
+          color: #666666;
+          border-right: 1px solid #20212a; }
+        .page-search-detail .sec-weapon .weapon-item .titles .item .title-desc {
+          display: flex;
+          height: 85px;
+          flex-direction: column;
+          justify-content: center; }
+        .page-search-detail .sec-weapon .weapon-item .titles .item .right {
+          float: right;
+          font-size: 14px;
+          text-align: center;
+          color: #999; }
+        .page-search-detail .sec-weapon .weapon-item .titles .item .name {
+          padding-bottom: 5px;
+          line-height: 1;
+          font-size: 16px;
+          color: #999; }
+        .page-search-detail .sec-weapon .weapon-item .titles .item .num {
+          margin-top: 15px;
+          font-size: 18px;
+          color: #fff; }
+      .page-search-detail .sec-weapon .weapon-item .arrow {
+        position: absolute;
+        bottom: 0;
+        right: 0; }
   .page-search-detail .sec-recent .tabs {
     display: inline-block;
     vertical-align: top;
@@ -204,11 +384,17 @@
       padding: 0; }
     .page-search-detail .sec-record table {
       width: 100%; }
+      .page-search-detail .sec-record table .rank-strong {
+        font-size: 22px;
+        font-weight: bold;
+        color: #f2a900; }
       .page-search-detail .sec-record table .btn-data-more {
         padding: 4px 13px;
         border: 1px solid #f2a900;
         color: #f2a900;
         border-radius: 2px; }
+        .page-search-detail .sec-record table .btn-data-more:hover {
+          opacity: .9; }
         .page-search-detail .sec-record table .btn-data-more i {
           margin: 0 0 0 10px;
           vertical-align: -5px;
@@ -232,7 +418,17 @@
         margin-right: 5px;
         width: 100px; }
       .page-search-detail .sec-record table .td-detail {
-        padding: 0; }
+        padding: 0;
+        background: #1d1e25; }
+        .page-search-detail .sec-record table .td-detail .user-name:hover {
+          text-decoration: underline;
+          cursor: pointer; }
+        .page-search-detail .sec-record table .td-detail .strong {
+          font-weight: bold;
+          color: #ff5454; }
+        .page-search-detail .sec-record table .td-detail .loading {
+          height: 100px;
+          background: url(../img/ico/ico-loading.gif) center center no-repeat; }
         .page-search-detail .sec-record table .td-detail .process-line .process-line-inner-0 {
           background: #ff5454; }
         .page-search-detail .sec-record table .td-detail .process-line .process-line-inner-1 {
@@ -242,8 +438,8 @@
         .page-search-detail .sec-record table .td-detail .process-line .process-line-inner-3 {
           background: #277734; }
       .page-search-detail .sec-record table table {
-        width: 100%;
-        background: #1d1e25; }
+        width: 80%;
+        margin-left: 5%; }
         .page-search-detail .sec-record table table th,
         .page-search-detail .sec-record table table td {
           width: 9%; }
@@ -255,3 +451,55 @@
     text-align: center;
     background: #373948;
     color: #fff; }
+    .page-search-detail .btn-showmore.finish {
+      background: transparent;
+      color: #666; }
+
+.goods-wrapper {
+  margin: 20px 0;
+  background: #20222b;
+  padding-left: 25px;
+  padding-top: 10px; }
+  .goods-wrapper .goods-item {
+    display: inline-block;
+    margin: 10px;
+    width: 250px;
+    height: 190px;
+    border: 1px solid #333;
+    box-sizing: border-box; }
+    .goods-wrapper .goods-item .img-box {
+      position: relative;
+      width: 100%;
+      height: 150px;
+      overflow: hidden; }
+      .goods-wrapper .goods-item .img-box:hover {
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8); }
+        .goods-wrapper .goods-item .img-box:hover img {
+          transform: translate(-50%, -50%) scale(1.1); }
+      .goods-wrapper .goods-item .img-box img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all ease .4s;
+        display: block;
+        height: 100%;
+        width: 100%; }
+    .goods-wrapper .goods-item .goods-bottom {
+      font-size: 14px;
+      color: #fff; }
+      .goods-wrapper .goods-item .goods-bottom .name {
+        width: 150px;
+        padding-left: 10px;
+        float: left;
+        line-height: 38px; }
+      .goods-wrapper .goods-item .goods-bottom .price {
+        color: #f2a900;
+        margin-right: 10px;
+        float: right;
+        line-height: 38px; }
+
+.no-data {
+  padding-top: 100px;
+  color: #fff;
+  text-align: center; }

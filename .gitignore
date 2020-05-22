@@ -1,5 +1,6 @@
 .DS_Store
 node_modules/
+design/
 dist/
 .sass-cache/
 npm-debug.log*

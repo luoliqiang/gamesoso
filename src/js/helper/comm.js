@@ -233,7 +233,6 @@
 			return time_str
 		},
 		formatTimeStr(time, option) {
-			console.log(time)
 			if (('' + time).length === 10) {
 				time = parseInt(time) * 1000
 			} else {
@@ -255,7 +254,7 @@
 				return '1天前'
 			}
 			if (option) {
-				return parseTime(time, option)
+				return this.parseTime(time, option)
 			} else {
 				return (
 				d.getMonth() +

@@ -3,35 +3,40 @@
 <head> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<title>game搜搜 - www.gamesousou.com/</title>
-<meta name="description" content="game搜搜提供各类游戏，吃鸡，英雄联盟等游戏的导航，专为游戏玩家而设计的导航！迅速了解赛事新闻，精准找到游戏官网，不用在费劲去记住每个游戏网站，并提供了游戏直播，游戏陪玩，游戏租号，加速器，游戏公会等相关的游戏服务聚合，方便玩家朋友快速进入" />
-<meta name="keywords" content="game搜搜,游戏导航，吃鸡，英雄联盟，赛事新闻，游戏官网" />
+<title>绝地求生战绩查询，组队开黑尽在在头号队友</title>
+<meta name="description" content="头号队友主要提供战绩查询，游戏开黑组队，交友，商城，游戏陪玩等综合信息一体的游戏服务站" />
+<meta name="keywords" content="绝地求生战绩查询，PUBG战绩查询，绝地求生皮肤，绝地求生账号，绝地求生CDKEY，游戏商城，PUBG账号，吃鸡账号，吃鸡激活码，吃鸡KEY" />
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<script src="../lib/vue.js"></script>
+<script src="../lib/element.min.js"></script>
 <link id="css-link" rel="stylesheet" href="../assets/css/comm.css">
 <link id="css-link" rel="stylesheet" href="../assets/css/search.css">
 </head> 
 <body>
-<div class="page-search-detail">
-  <!-- 头部搜索 --> 
+<div class="page-search-detail hide" id="vm-app" :class="{'show': showPage}">
+  <!-- 头部搜索 -->
   <div class="header"> 
     <h1 class="logo">头号队友</h1>
     <ul class="nav">
-      <li><a href="./index.html">首页</a></li>
+      <!-- <li><a href="./index.html">首页</a></li> -->
       <li class="selected"><a href="./pubg-search-detail.html">绝地求生战绩查询</a></li>
-      <li><a href="./team.html">组队开黑</a></li>
+      <!-- <li><a href="./team.html">组队开黑</a></li>
       <li><a>游戏商城</a></li>
       <li><a>游戏直播</a></li>
       <li><a>休闲游戏</a></li>
-      <li><a>动漫影视</a></li>
+      <li><a>动漫影视</a></li> -->
     </ul>
   </div>
   <!-- 搜索 -->
   <div class="search">
-    <input id="search-inp" type="text" placeholder="请输入要查询的用户昵称进行查询">
-    <div class="btn srh-btn"></div>
+    <input id="search-inp" v-model="srhVal" type="text" placeholder="请输入要查询的用户昵称进行查询" @keyup.enter="search">
+    <div class="btn srh-btn btn-dot-gold btn-hover-animate-gold" @click="search">
+      <i class="ico ico-search-gold"></i>查询
+    </div>
   </div>
   <!-- 内容 -->
-  <div class="wrapper" id="vm-app">
+  <div class="wrapper">
     <!-- 用户信息 -->
     <div class="sec-usr">
       <div class="avatar">
@@ -39,219 +44,314 @@
       </div>
       <div class="user-info">
         <div class="prof">
-          <div class="nick-name">-</div>
+          <div class="nick-name">{{ (userData && userData.account) || '-' }}</div>
           <div class="btns">
-            <div class="btn btn-middle btn-dot-white btn-refresh"><i class="ico ico-refresh"></i>更新</div>
-            <div class="btn btn-middle btn-dot-white btn-add"><i class="ico ico-add"></i>收藏</div>
+            <div @click="refresh" class="btn btn-middle btn-dot-white btn-refresh btn-hover-animate-white">
+              <i class="ico ico-refresh"></i>更新
+            </div>
+            <!-- <div class="btn btn-middle btn-dot-white btn-add"><i class="ico ico-add"></i>收藏</div> -->
           </div>
           <div class="refresh-time">
-            最近更新：<span class="refresh-time-num">-</span>
+            最近更新：<span class="refresh-time-num">{{ (userData && formatTimeStr(userData.lastUpdateTime)) || '-' }}</span>
           </div>
         </div>
-        <div class="qrcode">
-          <div class="left-txt">微信扫码</div>
+        <div class="adv">
+          <a href="http://www.91cdkey.com/propaganda?channelId=11004&netbarId=0&resCode=RES-1-1-53" target="_blank">
+            <img src="../assets/img/adv.png">
+          </a>
+          <!-- <div class="left-txt">微信扫码</div>
           <img src="">
           <div class="qr-items">
             <div>战绩查询</div>
             <div>组队开黑</div>
             <div>战绩查询</div>
             <div>战绩查询</div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
     <!-- 数据查询 -->
-    <div class="sec-data hide" :class="{show: sessonList && sessonList.length}">
-      <div class="session-select">
-        <div class="select-dropdown">
-          比赛：
-          <div id="dropdown-wrap">
-            <div class="dropdown dropdown-session">
-              <div class="btn">
-                <span class="dropdown-name"></span>
-                <i class="ico ico-arrowdown"></i></div>
-                <div class="dropdown-menu">
-                    <div class="dropdown-item" data-val="">2020第一赛季</div>
-                    <div class="dropdown-item" data-val="">第二赛季</div>
+    <div v-if="userData && !loadingUserData">
+      <div class="sec-data">
+        <div class="session-select">
+          <div class="select-dropdown">
+            比赛：
+            <el-dropdown @command="sessonSelectHandler">
+              <span class="el-dropdown-link">
+                {{ sessonSelectName }}<i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item v-for="(item, idx) in seasonList" :key="idx" :command="item">
+                  {{ item.name }}
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+            
+            <el-dropdown @command="sessonTypeSelectHandler" style="margin-left: 20px;">
+              <span class="el-dropdown-link">
+                {{ sessonTypeSelectName }}<i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item command="TPP">TPP</el-dropdown-item>
+                <el-dropdown-item command="FPP">FPP</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
+        </div>
+        <div class="data-item-wrap">
+          <div class="data-item" v-for="(item, idx) in seasonData">
+            <div class="title">
+              <span class="type">
+                <i class="ico ico-man"></i>
+                <i class="ico ico-man" v-if="idx === 1"></i>
+                <i class="ico ico-man" v-if="idx === 2"></i>
+                <i class="ico ico-man" v-if="idx === 2"></i>
+                <i class="ico ico-man" v-if="idx === 2"></i>
+                </i>{{ idx === 0 ? '单排' : idx === 1 ? '双排' : '四排' }}
+              </span>
+              <span class="round-num">{{ item && item.roundsPlayed }}场</span>
+            </div>
+            <div v-if="!loadingSeasonData" class="prof">
+              <img class="fl" :src="'../assets/img/game-type-' + (idx+1) +'.png'">
+              <div class="fr">
+                <b>{{ formScore(Math.ceil(item.rankPoints / 1000)) || '-' }}</b>
+                <div class="name">Surivor</div>
+                <div class="rank">第{{ '-' }}名</div>
+                <!-- <div class="process-line">
+                  <div class="process-line-inner" style="width: 50%;"></div>
+                </div> -->
+              </div>
+              <div class="badge-wrap">
+                <div class="badge-1">
+                  <i class="ico ico-rank"></i> {{ item.wins }}
                 </div>
-            </div>
-            <div class="dropdown dropdown-session-mode">
-              <div class="btn">
-                <span class="dropdown-name">TPP</span>
-                <i class="ico ico-arrowdown"></i>
+                <div class="badge-2">
+                  <i class="ico ico-kill"></i> {{ item.top10s }}
+                </div>
               </div>
-              <div class="dropdown-menu">
-                  <div class="dropdown-item">TPP</div>
-                  <div class="dropdown-item">FPP</div>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="select-item">
-            <div class="btn">
-              2020第一赛季<i class="ico ico-arrowdown"></i>
-            </div>
-            <div class="dropdown">
-              <div class="dropdown-menu">
-                <div class="dropdown-item">2020第一赛季</div>
-                <div class="dropdown-item">第二赛季</div>
-              </div>
-            </div>
-          </div>
-          <div class="select-item">
-            <div class="btn">
-              tpp<i class="ico ico-arrowdown"></i>
-            </div>
-            <div class="dropdown">
-              <div class="dropdown-menu">
-                <div class="dropdown-item">tpp</div>
-                <div class="dropdown-item">cope</div>
+              <div class="stat">
+                <div class="trip-bg">
+                  K/D<br>
+                  <b class="num-kd">{{ Math.ceil(item.kd / 100) / 10 }}</b>
+                </div>
+                <div class="trip-bg">
+                  场均伤害<br>
+                  <b class="num-hurt">{{ Math.ceil(item.damageDealtAvg / 100) / 10 }}</b>
+                </div>
+                <div>击杀总数 <span>{{ item.kills }}</span></div>
+                <div>场均击杀 <span>{{ item && (item.roundsPlayed && Math.ceil(item.kills / item.roundsPlayed * 100) / 100) || 0 }}</span></div>
+                <div>助攻总数 <span>{{ item.assists }}</span></div>
+                <div>场均助攻 <span>{{ item && (item.roundsPlayed && Math.ceil(item.assists / item.roundsPlayed * 100) / 100) || 0 }}</span></div>
+                <div class="trip-bg">最多击杀 <span>{{ item.roundMostKills }}</span></div>
+                <div class="trip-bg">最远击杀 <span>{{ Math.ceil(item.longestKill / 100) / 10 }}m</span></div>
+                <div>Top 10% <span>{{ item.top10Rate / 10 }}%</span></div>
+                <div class="trip-bg">爆头率 <span>{{ item.headShotKillsRate / 10 }}%</span></div>
+                <div class="trip-bg">KDA <span>{{ Math.ceil(item.kda / 100) / 10 }}</span></div>
+                <div>场均生存时间 <span>{{ formTime(item.timeSurvivedAvg / 1000) }}</span></div>
               </div>
             </div>
-          </div> -->
-        </div>
-      </div>
-      <div class="data-item-wrap">
-        <div class="data-item" v-for="(item, idx) in sessonList">
-          <div class="title">
-            <span class="type">
-              <i class="ico ico-man"></i>
-              </i>{{ idx === 0 ? '单排' : idx === 1 ? '双排' : '三排' }}
-            </span>
-            <span class="round-num">{{ item.roundsPlayed }}场</span>
-          </div>
-          <div class="prof">
-            <img class="fl" :src="'../assets/img/game-type-' + (idx+1) +'.png'">
-            <div class="fr">
-              <b>{{ item.rankPoints || '-' }}</b>
-              <div class="name">Surivor</div>
-              <div class="rank">第{{ '-' }}名</div>
-              <!-- <div class="process-line">
-                <div class="process-line-inner" style="width: 50%;"></div>
-              </div> -->
-            </div>
-            <div class="badge-wrap">
-              <div class="badge-1">
-                <i class="ico ico-rank"></i> {{ item.wins }}
-              </div>
-              <div class="badge-2">
-                <i class="ico ico-kill"></i> {{ item.top10s }}
-              </div>
-            </div>
-            <div class="stat">
-              <div class="trip-bg">
-                击杀总数<br>
-                <b class="num-kd">{{ item.kills }}</b>
-              </div>
-              <div class="trip-bg">
-                场均击杀<br>
-                <b class="num-hurt">{{ Math.ceil(item.kills / item.roundsPlayed * 100) / 100 }}</b>
-              </div>
-              <div>助攻总数 <span>{{ item.assists }}</span></div>
-              <div>场均助攻 <span>{{ Math.ceil(item.assists / item.roundsPlayed * 100) / 100 }}</span></div>
-              <div class="trip-bg">最多击杀 <span>{{ item.roundMostKills }}</span></div>
-              <div class="trip-bg">最远击杀 <span>{{ Math.ceil(item.longestKill / 100) / 10 }}m</span></div>
-              <div>Top 10% <span>{{ item.top10Rate / 10 }}%</span></div>
-              <div class="trip-bg">爆头率 <span>{{ item.headShotKillsRate / 10 }}%</span></div>
-              <div class="trip-bg">KDA <span>{{ Math.ceil(item.kda / 100) / 10 }}</span></div>
-              <div>场均生存时间 <span>{{ formTime(item.timeSurvivedAvg / 1000) }}</span></div>
-            </div>
+            <div v-else class="loading"></div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="sec sec-recent hide">
-      <div class="sec-title">最近15日战绩</div>
-      <div class="sec-cont">
-        <div>数值：
-          <div class="tabs tabs-15day">
-            <div class="tab selected">击杀</div>
-            <div class="tab">场均伤害</div>
-            <div class="tab">助攻</div>
-            <div class="tab">KD</div>
-            <div class="tab">救队友</div>
+      <div class="sec sec-recent hide">
+        <div class="sec-title">最近15日战绩</div>
+        <div class="sec-cont">
+          <div>数值：
+            <div class="tabs tabs-15day">
+              <div class="tab" @click="data15Index = 0" :class="{selected: data15Index === 0}">击杀</div>
+              <div class="tab" @click="data15Index = 1" :class="{selected: data15Index === 1}">场均伤害</div>
+              <div class="tab" @click="data15Index = 2" :class="{selected: data15Index === 2}">助攻</div>
+              <div class="tab" @click="data15Index = 3" :class="{selected: data15Index === 3}">KD</div>
+              <div class="tab" @click="data15Index = 4" :class="{selected: data15Index === 4}">治疗数</div>
+            </div>
+          </div>
+          <div id="ecahrt-model"></div>
+        </div>
+      </div>
+
+      <div class="sec sec-weapon">
+        <div class="sec-title">武器熟练度</div>
+        <div class="sec-cont">
+          <img class="arrow-left" @click="scrollLeft" src="../assets/img/ico/ico-weapon-left.png">
+          <img class="arrow-right" @click="scrollRight" src="../assets/img/ico/ico-weapon-right.png">
+          <div class="weapon-item-wrapper-box">
+            <div class="weapon-item-wrapper">
+              <div class="weapon-item" v-for="item in weaponMasterList" :class="{'weapon-item-detail': item.showDetail}">
+                <div class="fl">
+                  <div class="stat-prof">
+                    <div class="pic-box">
+                      <img class="pic-gun fl" :src="'../assets/img/guns/' + (gunmaps[item.name] && gunmaps[item.name][1] || 'default-gun') + '.png'">
+                    </div>
+                    <div class="info center">
+                      <div class="gun-name">{{ (gunmaps[item.name] && gunmaps[item.name][0]) || '-' }}</div>
+                      <div>
+                        <img class="fl" :src="'../assets/img/masters/'+ Math.floor(item.levelCurrent / 10) + '.png'">
+                        <div class="center badge-name">
+                          {{ item.levelCurrent | filteLevel }}
+                          <div class="process-line">
+                            <div class="process-line-inner" :style="'width: ' + item.levelCurrent + '%'"></div>
+                          </div>
+                        </div>
+                        <div class="stat-prof-stat">
+                          <div class="txt-item txt-middle">{{ item.defeats }}<div class="txt">总击败</div></div>
+                          <div class="txt-item txt-middle">{{ item.mostDefeatsInAGame }}<div class="txt">单场最高击败</div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="stat-detail">
+                    <div class="txt-item txt-middle">{{ item.damagePlayer | formatNumTree }}<div class="txt">总伤害</div></div>
+                    <div class="txt-item txt-middle">{{ item.mostDamagePlayerInAGame | formatNumTree }}<div class="txt">单场最高伤害</div></div>
+                    <div class="txt-item txt-middle">{{ item.longestDefeat | formatNumTree }}<div class="txt">最远击杀距离</div></div>
+                    <div class="txt-item txt-middle">{{ item.longRangeDefeats | formatNumTree }}<div class="txt">远距离击杀数</div></div>
+                    <div class="txt-item txt-middle">{{ item.headShots }}<div class="txt">总爆头</div></div>
+                    <div class="txt-item txt-middle">{{ item.mostHeadShotsInAGame }}<div class="txt">单场最高爆头</div></div>
+                    <div class="txt-item txt-middle">{{ item.medalDeadeye }}<div class="txt">爆头击败</div></div>
+                    <div class="txt-item txt-middle">{{ item.headShotsRate }}<div class="txt">爆头击败率</div></div>
+                    <div class="txt-item txt-middle">{{ item.kills }}<div class="txt">总击杀</div></div>
+                    <div class="txt-item txt-middle">{{ item.mostKillsInAGame }}<div class="txt">单场最高击杀</div></div>
+                    <div class="txt-item txt-middle">{{ item.groggies }}<div class="txt">总击倒</div></div>
+                    <div class="txt-item txt-middle">{{ item.mostGroggiesInAGame }}<div class="txt">单场最高击倒</div></div>
+                  </div>
+                </div>
+                <div class="center">
+                  <div class="titles">
+                    <div class="item" v-for="(titleItem, i) in weaponMasterTitles" :key="i">
+                      <img class="fl" :src="'../assets/img/title/' + titleItem.url">
+                      <div class="center title-desc">
+                        <div class="name">{{ titleItem.name }}</div>
+                        <div class="txt">{{ titleItem.desc }}</div>
+                      </div>
+                      <div class="right">
+                        <div class="num">{{ item[titleItem.key] }}</div>
+                        次
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <img v-show="!item.showDetail" @click="item.showDetail = !item.showDetail" title="点击展开" class="arrow" src="../assets/img/ico/ico-gun-arrow.png">
+                <img v-show="item.showDetail" @click="item.showDetail = !item.showDetail" title="点击收起" class="arrow" src="../assets/img/ico/ico-gun-arrow2.png">
+              </div>
+            </div>
           </div>
         </div>
-        <div id="ecahrt-model"></div>
+      </div>
+
+      <div class="sec sec-record">
+        <div class="sec-title">比赛记录</div>
+        <div class="sec-cont">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 200px;">排名</th>
+                <th style="width: 200px;">模式</th>
+                <th>击杀</th>
+                <th>击倒</th>
+                <th>伤害</th>
+                <th>助攻</th>
+                <th>治疗数</th>
+                <th>存活时间</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <template v-for="(item, idx) in matchesList">
+                <tr v-if="item.matchesInfo && item.playerInfo">
+                  <td>
+                    <div style="display: inline-block;text-align: left;width: 130px;">
+                      <span class="rank-strong">#{{ item.playerInfo.rank }}</span>
+                      {{ '/ ' + item.matchesInfo.teams }}
+                      <img style="margin-left: 10px;" v-if="item.playerInfo.rank === 1" src="../assets/img/ico/ico-checken.png">
+                      <div>{{ formatTimeStr(item.matchesInfo.gameTime, '{y}-{m}-{d} {h}:{i}') }}</div>
+                    </div>
+                  </td>
+                  <td>{{ item.matchesInfo.mapName | filterMapname}}
+                    <span class="ico-wrap">
+                      <i class="ico ico-man"></i>
+                      <i class="ico ico-man" v-if="item.matchesInfo.gameMode.indexOf('duo') >= 0 || item.matchesInfo.gameMode.indexOf('squad') >= 0"></i>
+                      <i class="ico ico-man" v-if="item.matchesInfo.gameMode.indexOf('squad') >= 0"></i>
+                      <i class="ico ico-man" v-if="item.matchesInfo.gameMode.indexOf('squad') >= 0"></i>
+                    </span>
+                  </td>
+                  <td><img style="margin-right: 5px;vertical-align: -6px;" src="../assets/img/ico/ico-gun.png">{{ item.playerInfo.kills }}</td>
+                  <td>{{ item.playerInfo.dbnos }}</td>
+                  <td>{{ Math.ceil(item.playerInfo.damageDealt / 100) / 10 }}</td>
+                  <td>{{ item.playerInfo.assists }}</td>
+                  <td>{{ item.playerInfo.heals }}</td>
+                  <td>{{ formTime(item.playerInfo.timeSurvived / 1000) }}</td>
+                  <td>
+                    <div class="btn btn-data-more" :class="{open: item.showTeam}" @click="showTeam(item, idx)">
+                      全队数据<i class="ico ico-arrowdown"></i>
+                    </div>
+                  </td>
+                </tr>
+                <tr v-if="item.showTeam">
+                  <td v-show="!item.loadingTeamDetail" class="td-detail" colspan="9">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>名称</th>
+                          <th>伤害</th>
+                          <th>击杀</th>
+                          <th>击倒</th>
+                          <th>助攻</th>
+                          <th>治疗数</th>
+                          <th>存活时间</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tr v-for="(team, subidx) in item.teamList" :key="subidx">
+                        <td><div class="user-name" @click="goPage(team.account)">{{ team.account }}</div></td>
+                        <td>
+                          <div style="display: inline-block;width: 170px;text-align: left;">
+                            <div class="process-line">
+                              <div class="process-line-inner" :class="'process-line-inner-' + subidx" :style="'width: ' + team.damageDealt / item.damageDealtAll * 100 + '%'"></div>
+                            </div>
+                            {{ Math.ceil(team.damageDealt / 100) / 10 }}
+                          </div>
+                        </td>
+                        <td :class="{'strong': filterStrong('kills', item.teamList) === team.kills && team.kills !== 0}">{{ team.kills }}</td>
+                        <td :class="{'strong': filterStrong('dbnos', item.teamList) === team.dbnos && team.dbnos !== 0}">{{ team.dbnos }}</td>
+                        <td :class="{'strong': filterStrong('assists', item.teamList) === team.assists && team.assists !== 0}">{{ team.assists }}</td>
+                        <td :class="{'strong': filterStrong('heals', item.teamList) === team.heals && team.heals !== 0}">{{ team.heals }}</td>
+                        <td>{{ formTime(team.timeSurvived / 1000) }}</td>
+                        <td><img v-if="team.mvp" src="../assets/img/ico/ico-mvp.png"></td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td v-show="item.loadingTeamDetail" class="td-detail" colspan="9">
+                    <div class="loading"></div>
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+        <div class="btn btn-showmore" @click="getMatchesPlayerlist" :class="{'finish': loadingMore === 'finish'}">
+          {{ loadingMore === true ? '数据加载中...' : loadingMore === 'finish' ? '没有更多数据' : '显示更多' }}
+        </div>
       </div>
     </div>
-    <div class="sec sec-record hide" :class="{show: matchesList && matchesList.length}">
-      <div class="sec-title">比赛记录</div>
-      <div class="sec-cont">
-        <table>
-          <thead>
-            <tr>
-              <th>排名</th>
-              <th>模式</th>
-              <th>击杀</th>
-              <th>击倒</th>
-              <th>伤害</th>
-              <th>助攻</th>
-              <th>救队友</th>
-              <th>存活时间</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <template v-for="(item, idx) in matchesList" :key="idx">
-              <tr>
-                <td>{{ item.playerInfo && item.playerInfo.rank }}</td>
-                <td>{{ item.matchesInfo.gameMode }}
-                  <span class="ico-wrap">
-                    <i class="ico ico-man"></i>
-                    <i class="ico ico-man"></i>
-                  </span></td>
-                <td>{{ item.playerInfo.kills }}</td>
-                <td>{{ item.playerInfo.dbnos }}</td>
-                <td>{{ Math.ceil(item.playerInfo.damageDealt / 100) / 10 }}</td>
-                <td>{{ item.playerInfo.assists }}</td>
-                <td>{{ item.playerInfo.heals }}</td>
-                <td>{{ formTime(item.playerInfo.timeSurvived / 1000) }}</td>
-                <td>
-                  <div class="btn btn-data-more" :class="{open: item.showTeam}" @click="showTeam(item)">
-                    全队数据<i class="ico ico-arrowdown"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr v-if="item.showTeam">
-                <td class="td-detail" colspan="9">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>名称</th>
-                        <th>伤害</th>
-                        <th>击杀</th>
-                        <th>击倒</th>
-                        <th>助攻</th>
-                        <th>救队友</th>
-                        <th>存活时间</th>
-                      </tr>
-                    </thead>
-                    <tr v-for="(team, subidx) in item.teamList" :key="subidx">
-                      <td>{{ team.account }}</td>
-                      <td>
-                        <div class="process-line">
-                          <div class="process-line-inner" :class="'process-line-inner-' + subidx" :style="'width: ' + team.damageDealt / item.damageDealtAll * 100 + '%'"></div>
-                        </div>
-                        {{ Math.ceil(team.damageDealt / 100) / 10 }}
-                      </td>
-                      <td>{{ team.kills }}</td>
-                      <td>{{ team.dbnos }}</td>
-                      <td>{{ team.assists }}</td>
-                      <td>{{ team.heals }}</td>
-                      <td>{{ formTime(team.timeSurvived / 1000) }}</td>
-                    </tr>
-                  </table>
-                </td>
-                <!-- <td v-if="!item.teamList" class="td-detail" colspan="9">
-                  <div>数据加载中...</div>
-                </td> -->
-              </tr>
-            </template>
-          </tbody>
-        </table>
+    <div v-if="loadingUserData" class="loading"></div>
+    <div class="init-tip loading" v-if="initUser">用户数据初始化中...</div>
+    <div v-if="userData === false" class="no-data">用户不存在，请确认大小写是否正确!</div>
+
+    <div class="goods-wrapper" v-if="!userData && goodsList.length">
+      <div class="goods-item" v-for="item in goodsList">
+        <a :href="item.url" target="_blank" :title="item.name">
+          <div class="img-box">
+            <img :src="item.img">
+          </div>
+          <div class="goods-bottom">
+            <span class="name ell">{{ item.name }}</span>
+            <span class="price">{{ item.money }}</span>
+          </div>
+        </a>
       </div>
-      <div class="btn btn-showmore">显示更多</div>
     </div>
   </div>
   <!-- 页脚 -->
@@ -260,13 +360,13 @@
     <div class="wrapper">
       <div class="logo-bottom"></div> 
       <div class="contact">
-        <div class="mb10">联系方式</div>
+        <!-- <div class="mb10">联系方式</div>
         <div>
           <img src=""> 
           <img src=""> 
-        </div>
+        </div> -->
       </div>
-      <div class="company-intro">
+      <div class="company-intro" style="width: 750px;">
         专为游戏玩家而设计的导航！迅速了解赛事新闻，精准找到游戏官网，不用在费劲去记住每个游戏网站，并提供了游戏直播，游戏陪玩，游戏租号，加速器，游戏公会等相关的游戏服务聚合，方便玩家朋友快速进入！非常节约时间，欢迎按 
         <span class="shortcut">Ctrl+D</span> 收藏至书签。 
         <div class="copy-right">
@@ -279,6 +379,14 @@
 </body>
 </html>
 <script data-main="../js/app/search.js" src="../lib/require.js"></script>
+<script>
+  // new Vue({
+  //     el: '#vm-app',
+  //     data: function() {
+  //       return { visible: false }
+  //     }
+  //   })
+</script>
 <script>
   var _hmt = _hmt || [];
   (function() {
