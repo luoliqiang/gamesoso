@@ -633,13 +633,16 @@
         height: 190px;
         border: 1px solid #333;
         box-sizing: border-box;
+        transition: all ease .6s;
+        &:hover {
+            box-shadow: 0 10px 10px rgba(0,0,0,.8);
+        }
         .img-box {
             position: relative;
             width: 100%;
             height: 150px;
             overflow: hidden;
             &:hover {
-                box-shadow: 0 10px 10px rgba(0,0,0,.8);
                 img {
                     transform: translate(-50%, -50%) scale(1.1);
                 }
@@ -678,4 +681,36 @@
     padding-top: 100px;
     color: #fff;
     text-align: center;
+}
+.sec-sports {
+    color: #fff;
+    .sports-item {
+        padding: 20px 0;
+        width: 320px;
+        height: 270px;
+        margin-right: 20px;
+        float: left;
+        background-color: #20212a;
+        box-sizing: border-box;
+        .score {
+            display: block;
+            width:75px;
+            height:40px;
+            font-size:48px;
+            font-family:Impact;
+            font-weight:400;
+            color:rgba(242,169,0,1);
+        }
+        .score-item {
+            padding: 10px 0 30px;
+        }
+        .sports-line {
+            padding: 0 20px;
+            height:50px;
+            line-height: 50px;
+        }
+        .sports-line-dark {
+            background:rgba(26,27,34,1);
+        }
+    }
 }

@@ -3,9 +3,9 @@
 <head> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<title>绝地求生战绩查询，组队开黑尽在在头号队友</title>
+<title>绝地求生战绩查询，组队开黑尽在头号队友</title>
 <meta name="baidu-site-verification" content="yM81O0kwuV" />
-<meta name="description" content="头号队友主要提供战绩查询，游戏开黑组队，交友，商城，游戏陪玩等综合信息一体的游戏服务站" />
+<meta name="description" content="头号队友—致力于做国内最大的组队开黑平台，并提供绝地求生战绩查询，Steam游戏，epic游戏，steam商城，组队，开黑，游戏陪玩，游戏代练等各种游戏的相关增值服务，组队开黑就来头号队友吧！" />
 <meta name="keywords" content="绝地求生战绩查询，PUBG战绩查询，绝地求生皮肤，绝地求生账号，绝地求生CDKEY，游戏商城，PUBG账号，吃鸡账号，吃鸡激活码，吃鸡KEY" />
 <link rel="shortext-centerut icon" href="/favicon.ico" type="image/x-icon"/>
 <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -73,89 +73,200 @@
     </div>
     <!-- 数据查询 -->
     <div v-if="userData && !loadingUserData">
-      <div class="sec-data">
-        <div class="session-select">
-          <div class="select-dropdown">
-            比赛：
-            <el-dropdown @command="sessonSelectHandler">
-              <span class="el-dropdown-link">
-                {{ sessonSelectName }}<i class="el-icon-arrow-down el-icon--right"></i>
-              </span>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item v-for="(item, idx) in seasonList" :key="idx" :command="item">
-                  {{ item.name }}
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
-            
-            <el-dropdown @command="sessonTypeSelectHandler" style="margin-left: 20px;">
-              <span class="el-dropdown-link">
-                {{ sessonTypeSelectName }}<i class="el-icon-arrow-down el-icon--right"></i>
-              </span>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="TPP">TPP</el-dropdown-item>
-                <el-dropdown-item command="FPP">FPP</el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
+      <!-- 竞技模式 -->
+      <div class="sec sec-data sec-sports">
+        <div class="sec-title">竞技模式战绩</div>
+        <div class="fl">
+          <div class="session-select">
+            <div class="select-dropdown">
+              比赛：
+              <el-dropdown @command="sessonSelectHandler">
+                <span class="el-dropdown-link">
+                  {{ sessonSelectName }}<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item v-for="(item, idx) in seasonList" :key="idx" :command="item">
+                    {{ item.name }}
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+              
+              <el-dropdown @command="sessonTypeSelectHandler" style="margin-left: 20px;">
+                <span class="el-dropdown-link">
+                  {{ sessonTypeSelectName }}<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item command="TPP">TPP</el-dropdown-item>
+                  <el-dropdown-item command="FPP">FPP</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </div>
+          </div>
+          <div>
+            <div class="sports-item">
+              <div class="plr20">
+                <div>平均排名</div>
+                <div class="score-item">
+                  <span class="score">23.1</span>
+                  <span class="icon-"></span>
+                </div>
+              </div>
+              <div class="sports-line sports-line-dark"><span class="g-999">前10率</span><span class="fr">35%</span></div>
+              <div class="sports-line"><span class="g-999">胜率</span><span class="fr">9%</span></div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总胜场数</span><span class="fr">3</span></div>
+            </div>
+            <div class="sports-item">
+              <div class="plr20">
+                <div>KDA</div>
+                <div class="score-item">
+                  <span class="score">1.54</span>
+                  <span class="icon-"></span>
+                </div>
+              </div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总淘汰数</span><span class="fr">35%</span></div>
+              <div class="sports-line"><span class="g-999">总助攻数</span><span class="fr">9%</span></div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总被淘汰数</span><span class="fr">3</span></div>
+            </div>
+            <div class="sports-item">
+              <div class="plr20">
+                <div>平均伤害量</div>
+                <div class="score-item">
+                  <span class="score">160</span>
+                  <span class="icon-"></span>
+                </div>
+              </div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总伤害量</span><span class="fr">4.965</span></div>
+              <div class="sports-line"><span class="g-999">总比赛场次</span><span class="fr">21</span></div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总击倒数</span><span class="fr">32</span></div>
+            </div>
+          </div>
+          <div class="last10">
+            <div>最近10场</div>
+            <div>
+              <div class="fl">
+                平均排名
+                <div>19.4</div>
+              </div>
+              <div class="fl">
+                KDA
+                <div>2.24</div>
+              </div>
+              <div class="fl">
+                平均伤害量
+                <div>2.24</div>
+              </div>
+              <div class="fl">
+                最近排名
+                <div class=“last10-recent-rank”>
+                  <div class="item">32</div>
+                  <div class="item">18</div>
+                  <div class="item">7</div>
+                  <div class="item">11</div>
+                  <div class="item">12</div>
+                  <div class="item">1</div>
+                  <div class="item gray">29</div>
+                  <div class="item">1</div>
+                  <div class="item yellow">64</div>
+                  <div class="item">12</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="data-item-wrap">
-          <div class="data-item" v-for="(item, idx) in seasonData">
-            <div class="title">
-              <span class="type">
-                <i class="ico ico-man"></i>
-                <i class="ico ico-man" v-if="idx === 1"></i>
-                <i class="ico ico-man" v-if="idx === 2"></i>
-                <i class="ico ico-man" v-if="idx === 2"></i>
-                <i class="ico ico-man" v-if="idx === 2"></i>
-                </i>{{ idx === 0 ? '单排' : idx === 1 ? '双排' : '四排' }}
-              </span>
-              <span class="round-num">{{ item && item.roundsPlayed }}场</span>
-            </div>
-            <div v-if="!loadingSeasonData" class="prof">
-              <img class="fl" :src="'./assets/img/game-type-' + (idx+1) +'.png'">
-              <div class="fr">
-                <b>{{ formScore(Math.ceil(item.rankPoints / 1000)) || '-' }}</b>
-                <div class="name">Surivor</div>
-                <div class="rank">第{{ '-' }}名</div>
-                <!-- <div class="process-line">
-                  <div class="process-line-inner" style="width: 50%;"></div>
-                </div> -->
-              </div>
-              <div class="badge-wrap">
-                <div class="badge-1">
-                  <i class="ico ico-rank"></i> {{ item.wins }}
-                </div>
-                <div class="badge-2">
-                  <i class="ico ico-kill"></i> {{ item.top10s }}
-                </div>
-              </div>
-              <div class="stat">
-                <div class="trip-bg">
-                  K/D<br>
-                  <b class="num-kd">{{ Math.ceil(item.kd / 100) / 10 }}</b>
-                </div>
-                <div class="trip-bg">
-                  场均伤害<br>
-                  <b class="num-hurt">{{ Math.ceil(item.damageDealtAvg / 100) / 10 }}</b>
-                </div>
-                <div>击杀总数 <span>{{ item.kills }}</span></div>
-                <div>场均击杀 <span>{{ item && (item.roundsPlayed && Math.ceil(item.kills / item.roundsPlayed * 100) / 100) || 0 }}</span></div>
-                <div>助攻总数 <span>{{ item.assists }}</span></div>
-                <div>场均助攻 <span>{{ item && (item.roundsPlayed && Math.ceil(item.assists / item.roundsPlayed * 100) / 100) || 0 }}</span></div>
-                <div class="trip-bg">最多击杀 <span>{{ item.roundMostKills }}</span></div>
-                <div class="trip-bg">最远击杀 <span>{{ Math.ceil(item.longestKill / 100) / 10 }}m</span></div>
-                <div>Top 10% <span>{{ item.top10Rate / 10 }}%</span></div>
-                <div class="trip-bg">爆头率 <span>{{ item.headShotKillsRate / 10 }}%</span></div>
-                <div class="trip-bg">KDA <span>{{ Math.ceil(item.kda / 100) / 10 }}</span></div>
-                <div>场均生存时间 <span>{{ formTime(item.timeSurvivedAvg / 1000) }}</span></div>
-              </div>
-            </div>
-            <div v-else class="loading"></div>
-          </div>
+        <div class="fr">
+          <img src="" alt="">
+          <div>黄金v</div>
+          <div><span>2018</span><span>RP</span></div>
+          <div>赛季最高：黄金v(2018 rp)</div>
         </div>
       </div>
 
+      <div class="sec sec-data">
+        <div class="sec-title">普通战绩</div>
+        <div class="">
+          <div class="session-select">
+            <div class="select-dropdown">
+              比赛：
+              <el-dropdown @command="sessonSelectHandler">
+                <span class="el-dropdown-link">
+                  {{ sessonSelectName }}<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item v-for="(item, idx) in seasonList" :key="idx" :command="item">
+                    {{ item.name }}
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+              
+              <el-dropdown @command="sessonTypeSelectHandler" style="margin-left: 20px;">
+                <span class="el-dropdown-link">
+                  {{ sessonTypeSelectName }}<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item command="TPP">TPP</el-dropdown-item>
+                  <el-dropdown-item command="FPP">FPP</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </div>
+          </div>
+          <div class="data-item-wrap">
+            <div class="data-item" v-for="(item, idx) in seasonData">
+              <div class="title">
+                <span class="type">
+                  <i class="ico ico-man"></i>
+                  <i class="ico ico-man" v-if="idx === 1"></i>
+                  <i class="ico ico-man" v-if="idx === 2"></i>
+                  <i class="ico ico-man" v-if="idx === 2"></i>
+                  <i class="ico ico-man" v-if="idx === 2"></i>
+                  </i>{{ idx === 0 ? '单排' : idx === 1 ? '双排' : '四排' }}
+                </span>
+                <span class="round-num">{{ item && item.roundsPlayed }}场</span>
+              </div>
+              <div v-if="!loadingSeasonData" class="prof">
+                <img class="fl" :src="'./assets/img/game-type-' + (idx+1) +'.png'">
+                <div class="fr">
+                  <b>{{ formScore(Math.ceil(item.rankPoints / 1000)) || '-' }}</b>
+                  <div class="name">Surivor</div>
+                  <div class="rank">第{{ '-' }}名</div>
+                  <!-- <div class="process-line">
+                    <div class="process-line-inner" style="width: 50%;"></div>
+                  </div> -->
+                </div>
+                <div class="badge-wrap">
+                  <div class="badge-1">
+                    <i class="ico ico-rank"></i> {{ item.wins }}
+                  </div>
+                  <div class="badge-2">
+                    <i class="ico ico-kill"></i> {{ item.top10s }}
+                  </div>
+                </div>
+                <div class="stat">
+                  <div class="trip-bg">
+                    K/D<br>
+                    <b class="num-kd">{{ Math.ceil(item.kd / 100) / 10 }}</b>
+                  </div>
+                  <div class="trip-bg">
+                    场均伤害<br>
+                    <b class="num-hurt">{{ Math.ceil(item.damageDealtAvg / 100) / 10 }}</b>
+                  </div>
+                  <div>击杀总数 <span>{{ item.kills }}</span></div>
+                  <div>场均击杀 <span>{{ item && (item.roundsPlayed && Math.ceil(item.kills / item.roundsPlayed * 100) / 100) || 0 }}</span></div>
+                  <div>助攻总数 <span>{{ item.assists }}</span></div>
+                  <div>场均助攻 <span>{{ item && (item.roundsPlayed && Math.ceil(item.assists / item.roundsPlayed * 100) / 100) || 0 }}</span></div>
+                  <div class="trip-bg">最多击杀 <span>{{ item.roundMostKills }}</span></div>
+                  <div class="trip-bg">最远击杀 <span>{{ Math.ceil(item.longestKill / 100) / 10 }}m</span></div>
+                  <div>Top 10% <span>{{ item.top10Rate / 10 }}%</span></div>
+                  <div class="trip-bg">爆头率 <span>{{ item.headShotKillsRate / 10 }}%</span></div>
+                  <div class="trip-bg">KDA <span>{{ Math.ceil(item.kda / 100) / 10 }}</span></div>
+                  <div>场均生存时间 <span>{{ formTime(item.timeSurvivedAvg / 1000) }}</span></div>
+                </div>
+              </div>
+              <div v-else class="loading"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+          
       <div class="sec sec-recent hide">
         <div class="sec-title">最近15日战绩</div>
         <div class="sec-cont">
@@ -359,6 +470,20 @@
   <!-- 底部 --> 
   <div class="bottom"> 
     <div class="wrapper">
+      <div class="friends-links">
+        <ul>
+          <li>友情链接：</li>
+          <li>
+            <a href="http://zzjxyxw.hamiren.com" target="_blank">嘉兴游戏</a>
+          </li>
+          <li>
+            <a href="http://www.ziyuan120.cn/list/29.html" target="_blank">ps完全自学教程</a>
+          </li>
+          <li>
+            <a href="https://www.3sdj.com" target="_blank">电竞大神</a>
+          </li>
+        </ul>
+      </div>
       <div class="logo-bottom"></div> 
       <div class="contact">
         <!-- <div class="mb10">联系方式</div>
@@ -368,7 +493,7 @@
         </div> -->
       </div>
       <div class="company-intro" style="width: 750px;">
-        专为游戏玩家而设计的导航！迅速了解赛事新闻，精准找到游戏官网，不用在费劲去记住每个游戏网站，并提供了游戏直播，游戏陪玩，游戏租号，加速器，游戏公会等相关的游戏服务聚合，方便玩家朋友快速进入！非常节约时间，欢迎按 
+        头号队友—致力于做国内最大的组队开黑平台，并提供绝地求生战绩查询，Steam游戏，epic游戏，steam商城，组队，开黑，游戏陪玩，游戏代练等各种游戏的相关增值服务，组队开黑就来头号队友吧！ 
         <span class="shortcut">Ctrl+D</span> 收藏至书签。 
         <div class="copy-right">
         Copyright © 2020 蜀ICP备19007792号

@@ -73,6 +73,7 @@ define(['jquery', 'comm', 'echarts', 'gunmaps'], function ($, comm, echarts, gun
           }
           comm.initPage()
           this.showPage = true
+          this.getRecentUser()
       },
       filters: {
         filteLevel (val) {
@@ -363,6 +364,17 @@ define(['jquery', 'comm', 'echarts', 'gunmaps'], function ($, comm, echarts, gun
                         this.lastId = res.data[res.data.length - 1].playerInfo.id
                     } else {
                       this.loadingMore = 'finish'
+                    }
+                })
+          },
+          getRecentUser () {
+            // 近期查询用户
+            $.post('/api/pg/recentUsers')
+                .then((res) => {
+                    this.loadingMore = false
+                    if (res.code === 0 && res.data && res.data.length) {
+                        
+                    } else {
                     }
                 })
           },

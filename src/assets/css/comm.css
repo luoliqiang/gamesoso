@@ -454,6 +454,18 @@ table {
   overflow: hidden;
   text-overflow: ellipsis; }
 
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.g-999 {
+  color: #999; }
+
+.plr20 {
+  padding: 0 20px; }
+
 ul, li {
   margin: 0;
   padding: 0;
@@ -729,10 +741,24 @@ body {
 
 .bottom {
   margin-top: 150px;
-  height: 280px;
-  padding-top: 70px;
+  height: 250px;
+  padding-top: 30px;
   box-sizing: border-box;
   background: #20212a; }
+  .bottom .friends-links {
+    margin-bottom: 20px;
+    color: #969696; }
+    .bottom .friends-links ul {
+      padding-top: 10px; }
+      .bottom .friends-links ul li {
+        margin: 0 10px;
+        display: inline-block; }
+        .bottom .friends-links ul li a {
+          text-decoration: none; }
+          .bottom .friends-links ul li a:hover {
+            text-decoration: underline; }
+    .bottom .friends-links a {
+      color: #969696; }
   .bottom .logo-bottom {
     float: left;
     margin: 30px 120px 0 0;

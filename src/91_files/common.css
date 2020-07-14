@@ -1,0 +1,394 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  /* -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; */
+}
+/*img,.pub_silent_gray {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); !* Firefox 3.5+ *!
+  filter: grey; -moz-opacity:.4;opacity:0.4;; !* IE6-9 *!
+  -webkit-filter: grayscale(80%); !* Chrome 19+ & Safari 6+ *!
+}*/
+ul, ol {
+  list-style: none;
+  margin: 0;
+}
+
+input, button, a, select {
+  outline: none !important;
+}
+
+table {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+input, textarea {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  background: #1b2d46;
+  border: 1px solid #2d3a56;
+}
+
+/*取消部分特殊样式*/
+.no-before:before {
+  display: none !important;
+}
+
+.no-after:after {
+  display: none !important;
+}
+
+.no-mt {
+  margin-top: 0 !important;
+}
+
+.no-mr {
+  margin-right: 0 !important;
+}
+
+.no-mb {
+  margin-bottom: 0 !important;
+}
+
+.no-ml {
+  margin-left: 0 !important;
+}
+
+.no-all-m {
+  margin: 0 !important;
+}
+
+.no-pt {
+  padding-top: 0 !important;
+}
+
+.no-pr {
+  padding-right: 0 !important;
+}
+
+.no-pb {
+  padding-bottom: 0 !important;
+}
+
+.no-pl {
+  padding-left: 0 !important;
+}
+
+.no-all-p {
+  padding: 0 !important;
+}
+
+.no-bt {
+  border-top: 0 !important;
+}
+
+.no-br {
+  border-right: 0 !important;
+}
+
+.no-bb {
+  border-bottom: 0 !important;
+}
+
+.no-bl {
+  border-left: 0 !important;
+}
+
+.no-all-b {
+  border: 0 !important;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: ' ';
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.tl {
+  text-align: left !important;
+}
+
+.tc {
+  text-align: center !important;
+}
+
+.tr {
+  text-align: right !important;
+}
+
+/*单行溢出*/
+.text-ellipsis {
+  display: block;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  /* 1*/
+  text-overflow: ellipsis;
+  text-align: left;
+  /* 2*/
+}
+
+/*两行溢出*/
+.text-ellipsis-2 {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/*弹性布局*/
+.flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -webkit-box-lines: multiple;
+}
+
+/*flex布局*/
+/*竖直方向排列*/
+.flexvert {
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+}
+
+.flexbet {
+  justify-content: space-between;
+  -moz-box-pack: justify;
+  -webkit-box-pack: justify;
+}
+
+/*flex水平两端对齐*/
+.flexcenter {
+  justify-content: center;
+  -moz-box-pack: center;
+  -webkit-box-pack: center;
+}
+
+/*flex水平两端对齐*/
+.flexmid {
+  align-items: center;
+  -moz-box-align: center;
+  -webkit-box-align: center;
+}
+
+/*flex垂直居中*/
+.flex1 {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+}
+
+/*必填项 红星*/
+.importITem::before {
+  content: "*";
+  color: #f00;
+  vertical-align: middle;
+}
+
+.header-nav {
+  width: 100%;
+  height: 65px;
+  padding: 0 25px;
+  background-color: #fff;
+  border-bottom: 1px solid #E4E4E4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.header-left {
+  float: left;
+  padding: 7px 0;
+}
+
+.header-left img {
+  height: 50px;
+}
+
+.header-right {
+  height: 100%;
+  float: right;
+  padding: 15px 0;
+}
+
+.header-xx, .header-name, .header-quit {
+  float: right;
+}
+
+.header-xx {
+  margin: 0 30px 0 15px;
+  position: relative;
+}
+.header-xx i {
+  font-size: 28px;
+  color: #9a9a9a;
+  line-height: 35px;
+  vertical-align: middle;
+}
+.header-xx label {
+  display: inline-block;
+  min-width: 16px;
+  background-color: #FF0000;
+  padding: 1px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  line-height: initial;
+  font-weight: normal;
+  position: absolute;
+  left: 15px;
+  top: 0;
+}
+
+.header-name {
+  margin-right: 30px;
+}
+
+.header-name img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.header-quit i {
+  font-size: 28px;
+  color: #9a9a9a;
+  line-height: 35px;
+  vertical-align: middle;
+}
+
+.header-xx span, .header-name span, .header-quit span {
+  display: inline-block;
+  max-width: 130px;
+  font-size: 15px;
+  color: #666;
+  line-height: 35px;
+  margin-left: 2px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.left-nav {
+  width: 80px;
+  height: 100%;
+  padding-top: 65px;
+  background-color: #EEEEEE;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.left-nav ul {
+  overflow: hidden;
+}
+
+.left-nav ul li {
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.left-nav ul li:nth-of-type(1) {
+  margin-top: 50px;
+}
+
+.left-nav ul li a {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 5px 0 0 5px;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.left-nav ul li a i {
+  display: block;
+  margin: 0 auto;
+  font-size: 30px;
+  line-height: 30px;
+  color: #9a9a9a;
+}
+
+.left-nav ul li a .icon {
+  display: none;
+}
+
+.left-nav ul li a p {
+  font-size: 13px;
+  color: #9a9a9a;
+  line-height: 23px;
+}
+
+.left-nav ul li.active {
+  text-align: right;
+}
+
+.left-nav ul li.active a {
+  background-color: #fff;
+  padding: 7px 0;
+}
+
+.left-nav ul li.active a i {
+  display: none;
+}
+
+.left-nav ul li.active a .icon {
+  display: block;
+  margin: 0 auto;
+  width: 32px;
+  height: 32px;
+}
+
+.left-nav ul li.active a p {
+  font-size: 15px;
+  color: #56ABE4;
+  line-height: 23px;
+}
+
+
+/*# sourceMappingURL=common.css.map */

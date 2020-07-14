@@ -1,6 +1,18 @@
 @import "_variable";
 @import "_reset";
 @import "_base";
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.g-999 {
+    color: #999;
+}
+.plr20 {
+    padding: 0 20px;
+}
 ul,li {
     margin: 0;
     padding: 0;
@@ -315,10 +327,30 @@ body {
 }
 .bottom {
     margin-top: 150px;
-    height: 280px;
-    padding-top: 70px;
+    height: 250px;
+    padding-top: 30px;
     box-sizing: border-box;
     background: $bgContent;
+    .friends-links {
+        margin-bottom: 20px;
+        color: #969696;
+        ul {
+            padding-top: 10px;
+            li {
+                margin: 0 10px;
+                display: inline-block;
+                a {
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        a {
+            color: #969696;
+        }
+    }
     .logo-bottom {
         float: left;
         margin: 30px 120px 0 0;
