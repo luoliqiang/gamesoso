@@ -505,8 +505,19 @@
   color: #fff;
   text-align: center; }
 
+.ovh {
+  overflow: hidden; }
+
 .sec-sports {
   color: #fff; }
+  .sec-sports .score {
+    display: block;
+    width: 75px;
+    height: 40px;
+    font-size: 48px;
+    font-family: Impact;
+    font-weight: 400;
+    color: #f2a900; }
   .sec-sports .sports-item {
     padding: 20px 0;
     width: 320px;
@@ -515,14 +526,6 @@
     float: left;
     background-color: #20212a;
     box-sizing: border-box; }
-    .sec-sports .sports-item .score {
-      display: block;
-      width: 75px;
-      height: 40px;
-      font-size: 48px;
-      font-family: Impact;
-      font-weight: 400;
-      color: #f2a900; }
     .sec-sports .sports-item .score-item {
       padding: 10px 0 30px; }
     .sec-sports .sports-item .sports-line {
@@ -531,3 +534,55 @@
       line-height: 50px; }
     .sec-sports .sports-item .sports-line-dark {
       background: #1a1b22; }
+  .sec-sports .last10 {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #20212a; }
+    .sec-sports .last10 .ovh {
+      overflow: hidden; }
+    .sec-sports .last10 .score-title {
+      padding-bottom: 10px;
+      font-size: 14px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #999999; }
+    .sec-sports .last10 .score {
+      font-size: 36px;
+      font-size: 36px;
+      font-family: Impact;
+      font-weight: 400;
+      color: #f2a900; }
+  .sec-sports .last10-recent-rank-wrap {
+    float: none;
+    overflow: hidden; }
+    .sec-sports .last10-recent-rank-wrap .item {
+      display: inline-block; }
+  .sec-sports .last10-title {
+    position: relative;
+    margin: 0 0 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: white; }
+    .sec-sports .last10-title:before {
+      display: block;
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 80px;
+      width: 860px;
+      height: 1px;
+      background: #323442; }
+  .sec-sports .last10-recent-rank-wrap {
+    margin-left: 300px; }
+    .sec-sports .last10-recent-rank-wrap .item {
+      text-align: center;
+      width: 40px;
+      height: 44px;
+      line-height: 44px;
+      background: #1a1b22;
+      border-radius: 4px; }
+      .sec-sports .last10-recent-rank-wrap .item.gray {
+        background: #74859d; }
+      .sec-sports .last10-recent-rank-wrap .item.yellow {
+        background: #f2a900;
+        opacity: 0.8; }

@@ -378,6 +378,20 @@ define(['jquery', 'comm', 'echarts', 'gunmaps'], function ($, comm, echarts, gun
                     }
                 })
           },
+          getFightModeData () {
+            // 竞技模式数据
+            let params = {
+              userId: this.srhVal
+            }
+            $.post('/api/pg/seasonRankedData', {})
+                .then((res) => {
+                    this.loadingMore = false
+                    if (res.code === 0 && res.data && res.data.length) {
+                        
+                    } else {
+                    }
+                })
+          },
           goPage (name) {
             window.location.href = location.origin + location.pathname + '?userName=' + name
           },

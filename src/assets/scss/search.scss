@@ -682,8 +682,20 @@
     color: #fff;
     text-align: center;
 }
+.ovh {
+    overflow: hidden;
+}
 .sec-sports {
     color: #fff;
+    .score {
+        display: block;
+        width:75px;
+        height:40px;
+        font-size:48px;
+        font-family:Impact;
+        font-weight:400;
+        color:rgba(242,169,0,1);
+    }
     .sports-item {
         padding: 20px 0;
         width: 320px;
@@ -692,15 +704,6 @@
         float: left;
         background-color: #20212a;
         box-sizing: border-box;
-        .score {
-            display: block;
-            width:75px;
-            height:40px;
-            font-size:48px;
-            font-family:Impact;
-            font-weight:400;
-            color:rgba(242,169,0,1);
-        }
         .score-item {
             padding: 10px 0 30px;
         }
@@ -712,5 +715,70 @@
         .sports-line-dark {
             background:rgba(26,27,34,1);
         }
+    }
+    .last10 {
+        margin: 20px 0;
+        padding: 20px;
+        background-color: #20212a;
+        .ovh {
+            overflow: hidden;
+        }
+        .score-title {
+            padding-bottom: 10px;
+            font-size:14px;
+            font-family:Microsoft YaHei;
+            font-weight:400;
+            color:rgba(153,153,153,1);
+        }
+        .score {
+            font-size: 36px;
+            font-size:36px;
+            font-family:Impact;
+            font-weight:400;
+            color:rgba(242,169,0,1);
+        }
+    }
+    .last10-recent-rank-wrap {
+        float: none;
+        overflow: hidden;
+        .item {
+            display: inline-block;
+        }
+    }
+    .last10-title {
+        position: relative;
+        margin: 0 0 20px;
+        font-size:16px;
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        &:before {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 80px;
+            width: 860px;
+            height: 1px;
+            background:rgba(50,52,66,1);
+        }
+    }
+    .last10-recent-rank-wrap {
+        margin-left: 300px;
+        .item {
+            text-align: center;
+            width:40px;
+            height:44px;
+            line-height: 44px;
+            background:rgba(26,27,34,1);
+            border-radius:4px;
+            &.gray {
+                background:rgba(116,133,157,1);
+            }
+            &.yellow {
+                background:rgba(242,169,0,1);
+                opacity:0.8;
+            }
+        }
+        
     }
 }
