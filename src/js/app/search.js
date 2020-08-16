@@ -35,6 +35,7 @@ define(['jquery', 'comm', 'echarts', 'gunmaps'], function ($, comm, echarts, gun
           seasonData: [],
           matchesList: [],
           teamList: [],
+          fightModeData: null,
           weaponMasterList: [],
           userData: null,
           srhVal: '',
@@ -258,12 +259,14 @@ define(['jquery', 'comm', 'echarts', 'gunmaps'], function ($, comm, echarts, gun
                         this.sessonSelectName = this.seasonList[0].name
                         this.sessonTypeSelectName = 'TPP'
                         this.getSeasonData(this.seasonList[0].key)
+                        this.getFightModeData(this.seasonList[0].key)
                     }
                 })
           },
           sessonSelectHandler (item) {
             this.sessonSelectName = item.name
             this.getSeasonData(item.key)
+            this.getFightModeData(this.seasonList[0].key)
           },
           sessonTypeSelectHandler (mode) {
             this.sessonTypeSelectName = mode
@@ -378,17 +381,18 @@ define(['jquery', 'comm', 'echarts', 'gunmaps'], function ($, comm, echarts, gun
                     }
                 })
           },
-          getFightModeData () {
+          getFightModeData (key) {
             // 竞技模式数据
-            let params = {
-              userId: this.srhVal
+            let _this = this
+            var params = {
+                key: key,
+                userId: this.userData.id
             }
-            $.post('/api/pg/seasonRankedData', {})
+            $.post('/api/pg/seasonRankedData', params)
                 .then((res) => {
-                    this.loadingMore = false
-                    if (res.code === 0 && res.data && res.data.length) {
-                        
-                    } else {
+                    if (res.code === 0 && res.data) {
+                      console.log(res.data.squad)
+                        _this.fightModeData = res.data.squad
                     }
                 })
           },

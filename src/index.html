@@ -74,7 +74,7 @@
     <!-- 数据查询 -->
     <div v-if="userData && !loadingUserData">
       <!-- 竞技模式 -->
-      <div class="sec sec-data sec-sports">
+      <div class="sec sec-data sec-sports" v-if="fightModeData">
         <div class="sec-title">竞技模式战绩</div>
         <div class="fl">
           <div class="session-select">
@@ -107,37 +107,37 @@
               <div class="plr20">
                 <div>平均排名</div>
                 <div class="score-item">
-                  <span class="score">23.1</span>
+                  <span class="score">{{ Math.ceil(fightModeData.avgRank * 100) / 100 }}</span>
                   <span class="icon-"></span>
                 </div>
               </div>
-              <div class="sports-line sports-line-dark"><span class="g-999">前10率</span><span class="fr">35%</span></div>
-              <div class="sports-line"><span class="g-999">胜率</span><span class="fr">9%</span></div>
-              <div class="sports-line sports-line-dark"><span class="g-999">总胜场数</span><span class="fr">3</span></div>
+              <div class="sports-line sports-line-dark"><span class="g-999">前10率</span><span class="fr">{{ Math.ceil(fightModeData.top10Ratio * 100) }}%</span></div>
+              <div class="sports-line"><span class="g-999">胜率</span><span class="fr">{{ Math.ceil(fightModeData.winRatio * 100) }}%</span></div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总胜场数</span><span class="fr">{{ fightModeData.wins }}</span></div>
             </div>
             <div class="sports-item">
               <div class="plr20">
                 <div>KDA</div>
                 <div class="score-item">
-                  <span class="score">1.54</span>
+                  <span class="score">{{ Math.ceil(fightModeData.kda / 100) / 10 }}</span>
                   <span class="icon-"></span>
                 </div>
               </div>
-              <div class="sports-line sports-line-dark"><span class="g-999">总淘汰数</span><span class="fr">35%</span></div>
-              <div class="sports-line"><span class="g-999">总助攻数</span><span class="fr">9%</span></div>
-              <div class="sports-line sports-line-dark"><span class="g-999">总被淘汰数</span><span class="fr">3</span></div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总淘汰数</span><span class="fr">{{ fightModeData.kills }}</span></div>
+              <div class="sports-line"><span class="g-999">总助攻数</span><span class="fr">{{ fightModeData.assists }}</span></div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总被淘汰数</span><span class="fr">{{ fightModeData.deaths }}</span></div>
             </div>
             <div class="sports-item">
               <div class="plr20">
                 <div>平均伤害量</div>
                 <div class="score-item">
-                  <span class="score">160</span>
+                  <span class="score">{{ Math.ceil(fightModeData.damageDealtAvg / 100) / 10 }}</span>
                   <span class="icon-"></span>
                 </div>
               </div>
-              <div class="sports-line sports-line-dark"><span class="g-999">总伤害量</span><span class="fr">4.965</span></div>
-              <div class="sports-line"><span class="g-999">总比赛场次</span><span class="fr">21</span></div>
-              <div class="sports-line sports-line-dark"><span class="g-999">总击倒数</span><span class="fr">32</span></div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总伤害量</span><span class="fr">{{ Math.ceil(fightModeData.damageDealt / 100) / 10 }}</span></div>
+              <div class="sports-line"><span class="g-999">总比赛场次</span><span class="fr">{{ fightModeData.roundsPlayed }}</span></div>
+              <div class="sports-line sports-line-dark"><span class="g-999">总击倒数</span><span class="fr">{{ fightModeData.dBNOs }}</span></div>
             </div>
           </div>
           <div class="last10">
@@ -173,11 +173,14 @@
             </div>
           </div>
         </div>
-        <div class="fr">
+        <div class="fl badge-box">
           <img src="" alt="">
-          <div>黄金v</div>
-          <div><span>2018</span><span>RP</span></div>
-          <div>赛季最高：黄金v(2018 rp)</div>
+          <div class="title">黄金v</div>
+          <div class="time-box">
+            <span class="time">2018</span>
+            <span class="rp">RP</span>
+          </div>
+          <div class="best"><span>赛季最高：</span>黄金v(2018 rp)</div>
         </div>
       </div>
 

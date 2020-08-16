@@ -16,7 +16,7 @@ function compileCss (cb) {
 }
 
 function autoReload () {
-    const htmlPath = '../src/pages/**/*.html'
+    const htmlPath = '../src/**/*.html'
     const cssPath = '../src/assets/css/*.css'
     const scriptPath = '../src/js/**/*.js'
     watch([cssPath, htmlPath, scriptPath], function () {
